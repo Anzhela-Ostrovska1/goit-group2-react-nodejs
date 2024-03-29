@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
-import { theme } from './theme';
+import { theme } from './light-theme';
 
 import RobotoRegular from '../assets/fonts/Roboto-Regular.ttf';
 import RobotoMedium from '../assets/fonts/Roboto-Medium.ttf';
@@ -90,8 +90,7 @@ export const GlobalStyles = css`
   body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    color: ${theme.color.black};
-    background-color: ${theme.color.white};
+    background-color: #fff;
   }
 
   /* ========================= /Scroll styles ========================= */
