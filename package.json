@@ -2,6 +2,7 @@
   "name": "goit-group2-react-nodejs",
   "version": "1.0.0",
   "type": "module",
+  "homepage": "https://anzhela-ostrovska1.github.io/goit-group2-react-nodejs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
