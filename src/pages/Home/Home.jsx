@@ -1,3 +1,11 @@
+import DailyNorma from '../../components/DailyNorma/DailyNorma';
+import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <DailyNorma />
+      <WaterRatioPanel />
+    </div>
+  );
 }
