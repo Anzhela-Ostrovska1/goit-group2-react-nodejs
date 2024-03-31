@@ -1,7 +1,8 @@
 import { UserAuth } from '../UserAuth/UserAuth';
 import { Logo } from '../Logo/Logo';
 import { Wrapper } from './Header.styled';
-export const Header = () => {
+
+const Header = () => {
   return (
     <header>
       <Wrapper>
@@ -11,3 +12,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
