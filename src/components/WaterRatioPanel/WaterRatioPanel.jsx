@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import {
+  WaterRatioContainer,
+  RatioScale,
+  RatioInput,
+  WaterPercentage,
+  AddWaterButton,
+} from './WaterRatioPanel.styled';
 
 const WaterRatioPanel = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const value = 70;
   const openModal = () => {
-    console.log('Open modal'); //логіка відкриття модалки
+    setIsModalOpen(true);
   };
   return (
-    <div>
-      <div>
+    <WaterRatioContainer>
+      <RatioScale>
         <h2>Today</h2>
-        <input type="range" min="0" max="100" />
-        <div>
+        <RatioInput value={value} type="range" min="0" max="100" />
+        <WaterPercentage>
           <p>0%</p>
           <p>50%</p>
           <p>100%</p>
-        </div>
-      </div>
-      <div>
-        <button onClick={openModal} type="button">
-          <FiPlusCircle />
-          Add Water
-        </button>
-      </div>
-    </div>
+        </WaterPercentage>
+      </RatioScale>
+
+      <AddWaterButton onClick={openModal} type="button">
+        <FiPlusCircle />
+        Add Water
+      </AddWaterButton>
+
+      {isModalOpen && (
+        <AddWaterModal isOpen={isModalOpen} onClose={closeModal} />
+      )}
+    </WaterRatioContainer>
   );
 };
 
