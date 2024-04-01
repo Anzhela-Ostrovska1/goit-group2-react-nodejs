@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Global styles={GlobalStyles} />
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/goit-group2-react-nodejs">
         <App />
       </BrowserRouter>
     </ThemeProvider>
