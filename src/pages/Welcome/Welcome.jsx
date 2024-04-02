@@ -6,7 +6,10 @@ export default function Welcome() {
   return (
     <>
       <div>
-        <AddWaterModal />
+        <AddWaterModal
+          isOpen={true}
+          onClose={() => console.log('modal Closed')}
+        />
         <EditWaterModal />
       </div>
       <Wrapper>
