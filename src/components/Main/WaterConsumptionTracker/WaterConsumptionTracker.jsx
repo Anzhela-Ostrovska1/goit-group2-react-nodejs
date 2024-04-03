@@ -1,4 +1,5 @@
 import sprite from 'src/assets/images/sprite/sprite.svg';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Heading,
@@ -7,9 +8,13 @@ import {
   ListTitle,
   List,
   Item,
-  Button
+  Button,
 } from './WaterConsumptionTracker.styled';
 export const WaterConsumptionTracker = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/signup');
+  };
   const benefits = [
     {
       text: 'Habit drive',
@@ -24,6 +29,7 @@ export const WaterConsumptionTracker = () => {
       id: `${sprite}#icon-wrench-screwdriver`,
     },
   ];
+
   return (
     <Container>
       <Heading>Water consumption tracker</Heading>
@@ -39,7 +45,9 @@ export const WaterConsumptionTracker = () => {
           </Item>
         ))}
       </List>
-      <Button type="button">Try tracker</Button>
+      <Button type="button" onClick={handleClick}>
+        Try tracker
+      </Button>
     </Container>
   );
 };
