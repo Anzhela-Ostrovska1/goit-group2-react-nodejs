@@ -24,12 +24,13 @@ export const Item = styled.li`
     transform: translateY(-50%);
     width: 8px;
     height: 8px;
-    background-color: blue;
+    background-color: ${({theme}) => theme.color.primaryAccent};
     border-radius: 50%;
   }
 
-  @media screen and (min-width: 768px) {
-    list-style-position: inside;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    /* list-style-position: inside; */
+    list-style-position: outside;
   }
 `;
 
@@ -40,12 +41,13 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   display: inline-block;
+  
 
   width: 280px;
 
   padding: 24px 16px;
-  background-color: yellow;
-  box-shadow: 0 4px 14px rgba(64, 123, 255, 0.3);
+  background-color: ${({theme}) => theme.color.secondaryWhite};
+  box-shadow: ${({theme}) => theme.boxShadowforButton.hoverButton};
   border-radius: 10px;
 
   @media screen and (min-width: 768px) {

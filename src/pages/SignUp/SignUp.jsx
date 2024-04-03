@@ -1,3 +1,10 @@
+import { SignUpForm } from '../../components/SignUpForm/SignUpForm';
+import { Section } from '../SignIn/SignIn.styled';
+
 export default function SignUp() {
-  return <div>SignUp</div>;
+  return (
+    <Section>
+      <SignUpForm />
+    </Section>
+  );
 }
