@@ -1,19 +1,20 @@
 import styled from '@emotion/styled';
+
 export const Wrapper = styled.div`
+  /* transform: translateX(-50%); */
   padding: 24px 12px;
-  width: 280px;
-  margin: 0 auto;
+  /* top: 40px; */
   position: relative;
 `;
 export const Container = styled.div``;
 export const ButtonClose = styled.button`
   position: absolute;
-  top: 28px;
+
   right: 12px;
   width: 24px;
   height: 24px;
   border: none;
-  padding: 6px;
+
   background-color: transparent;
   cursor: pointer;
 `;
@@ -42,7 +43,7 @@ export const ButtonCounter = styled.button`
   background-color: #fff;
   border: 1px solid #9ebbff;
   border-radius: 30px;
-  padding: 10px;
+  padding: 0px;
   width: 44px;
   height: 44px;
   cursor: pointer;

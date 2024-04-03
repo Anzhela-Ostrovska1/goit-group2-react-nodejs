@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import TimePicker from '../TimePicker/TimePicker';
+import sprite from '../../assets/images/sprite/horodiukIcons.svg';
+import css from './AddWaterModal.module.css';
 import {
   Wrapper,
   Container,
@@ -36,10 +38,12 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
       default:
         break;
     }
-    console.log(currentTime);
+
     setTime(currentTime.getTime());
   };
-  const handleAddWater = () => {};
+  const handleAddWater = () => {
+    console.log({ amount, date: Date(time) });
+  };
   const handleClose = () => {
     onClose();
   };
@@ -63,8 +67,35 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
     const value = parseInt(e.target.value > 0 ? e.target.value : 0, 10);
     setCurrentAmount(value);
   };
+  const modalStyle = {
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      overflow: 'scroll',
+    },
+
+    content: {
+      // transform: 'translateX(-50%)',
+      padding: '0',
+      top: '0',
+      border: 'none',
+      borderRadius: '10px',
+      width: '280px',
+      backgroundColor: '#fff',
+
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+    },
+  };
+
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose}>
+    <Modal
+      className={css.addWaterModal}
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      style={modalStyle}
+    >
       <Wrapper
         onClick={e => {
           if (e.target.closest('#selectTimeWrapper')) return;
@@ -72,16 +103,28 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
         }}
       >
         <Container>
-          <ButtonClose onClick={handleClose}>X</ButtonClose>
+          <ButtonClose onClick={handleClose}>
+            <svg width="24" height="24">
+              <use href={`${sprite}#icon-close`}></use>
+            </svg>
+          </ButtonClose>
           <MainTitle>Add water</MainTitle>
           <BoldText>Choose a value:</BoldText>
           <NormalText>Amount of water:</NormalText>
           <CounterBox>
-            <ButtonCounter onClick={decrementAmount}>-</ButtonCounter>
+            <ButtonCounter onClick={decrementAmount}>
+              <svg width="44" height="44">
+                <use href={`${sprite}#icon-minus`}></use>
+              </svg>
+            </ButtonCounter>
             <AccentWrapper>
               <AccentText>{amount}ml</AccentText>
             </AccentWrapper>
-            <ButtonCounter onClick={incrementAmount}>+</ButtonCounter>
+            <ButtonCounter onClick={incrementAmount}>
+              <svg width="44" height="44">
+                <use href={`${sprite}#icon-plus`}></use>
+              </svg>
+            </ButtonCounter>
           </CounterBox>
           <NormalText>Recording time:</NormalText>
           {isEditTime ? (

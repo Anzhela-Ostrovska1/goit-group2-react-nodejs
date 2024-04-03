@@ -1,0 +1,13 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path fill="none" stroke="#407bff" style="stroke: var(--color1, #407bff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M8 24l16-16M8 8l16 16"></path>
+</symbol>
+<symbol id="icon-minus" viewBox="0 0 32 32">
+<path fill="#407bff" style="fill: var(--color1, #407bff)" d="M16 11.091c0.145 0 0.283 0.057 0.386 0.16s0.16 0.241 0.16 0.386v3.818h3.818c0.145 0 0.283 0.057 0.386 0.16s0.16 0.241 0.16 0.386-0.057 0.283-0.16 0.386c-0.102 0.102-0.241 0.16-0.386 0.16h-3.818v3.818c0 0.145-0.057 0.283-0.16 0.386s-0.241 0.16-0.386 0.16-0.283-0.057-0.386-0.16c-0.102-0.102-0.16-0.241-0.16-0.386v-3.818h-3.818c-0.145 0-0.283-0.057-0.386-0.16s-0.16-0.241-0.16-0.386 0.057-0.283 0.16-0.386c0.102-0.102 0.241-0.16 0.386-0.16h3.818v-3.818c0-0.145 0.057-0.283 0.16-0.386s0.241-0.16 0.386-0.16z"></path>
+</symbol>
+<symbol id="icon-plus" viewBox="0 0 32 32">
+<path fill="#407bff" style="fill: var(--color1, #407bff)" d="M11.091 16c0-0.145 0.057-0.283 0.16-0.386s0.241-0.16 0.386-0.16h8.727c0.145 0 0.283 0.057 0.386 0.16s0.16 0.241 0.16 0.386-0.057 0.283-0.16 0.386c-0.102 0.102-0.241 0.16-0.386 0.16h-8.727c-0.145 0-0.283-0.057-0.386-0.16s-0.16-0.241-0.16-0.386z"></path>
+</symbol>
+</defs>
+</svg>
