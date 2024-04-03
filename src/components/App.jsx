@@ -1,12 +1,12 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import WelcomePage from '../pages/Welcome/Welcome';
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import Loader from './common/Loader/Loader';
 
 import SharedLayout from './SharedLayout';
 
+const WelcomePage = lazy(() => import('../pages/Welcome/Welcome'));
 const HomePage = lazy(() => import('../pages/Home/Home'));
 const SignInPage = lazy(() => import('../pages/SignIn/SignIn'));
 const SignUpPage = lazy(() => import('../pages/SignUp/SignUp'));
@@ -24,7 +24,10 @@ const App = () => {
             <RestrictedRoute component={<WelcomePage />} redirectTo="/home" />
           }
         />
-        <Route path="home" element={<PrivateRoute component={HomePage} />} />
+        <Route
+          path="home"
+          element={<PrivateRoute component={HomePage} redirectTo={'/'} />}
+        />
         <Route
           path="signin"
           element={

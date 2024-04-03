@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
-import { theme } from './light-theme';
 
 import RobotoRegular from '../assets/fonts/Roboto-Regular.ttf';
 import RobotoMedium from '../assets/fonts/Roboto-Medium.ttf';
