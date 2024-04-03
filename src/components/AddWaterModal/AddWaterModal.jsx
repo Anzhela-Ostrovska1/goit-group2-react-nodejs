@@ -75,7 +75,9 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
 
     content: {
       // transform: 'translateX(-50%)',
-      padding: '0',
+      position: 'absolute',
+      padding: '24px 12px',
+      inset: '40px auto auto 50%',
       top: '0',
       border: 'none',
       borderRadius: '10px',
