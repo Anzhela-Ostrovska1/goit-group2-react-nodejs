@@ -3,6 +3,7 @@ import { Wrapper, Section } from './Welcome.styled';
 import AddWaterModal from '../../components/AddWaterModal/AddWaterModal.jsx';
 import EditWaterModal from '../../components/EditWaterModal/EditWaterModal.jsx';
 export default function Welcome() {
+  console.log();
   return (
     <>
       <div>

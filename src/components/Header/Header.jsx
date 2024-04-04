@@ -1,14 +1,16 @@
 import { UserAuth } from '../UserAuth/UserAuth';
 import { Logo } from '../Logo/Logo';
-import { Wrapper } from './Header.styled';
+import { MainContainer, Wrapper } from './Header.styled';
 
 const Header = () => {
   return (
     <header>
-      <Wrapper>
+      <MainContainer>
+        <Wrapper>
         <Logo />
         <UserAuth />
       </Wrapper>
+      </MainContainer>
     </header>
   );
 };
