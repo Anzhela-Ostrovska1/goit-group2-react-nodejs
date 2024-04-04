@@ -1,22 +1,51 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  /* transform: translateX(-50%); */
-  padding: 24px 12px;
-  /* top: 40px; */
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: scroll;
 `;
-export const Container = styled.div``;
+
+export const Container = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  width: 280px;
+  background-color: #fff;
+  padding: 24px 12px;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 24px;
+    width: 704px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 50%;
+    width: 592px;
+    transform: translate(-50%, -50%);
+  }
+`;
+
 export const ButtonClose = styled.button`
   position: absolute;
-
+  top: 24px;
   right: 12px;
   width: 24px;
   height: 24px;
   border: none;
-
+  padding: 0;
   background-color: transparent;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    top: 32px;
+    right: 24px;
+  }
 `;
 export const MainTitle = styled.h2`
   font-weight: 500;
@@ -62,6 +91,18 @@ export const TimeInput = styled.input`
   padding: 12px 10px;
   width: 120px;
   height: 44px;
+  color: #407bff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
 `;
 export const AmountInput = styled.input`
   border: 1px solid #d7e3ff;
@@ -70,9 +111,17 @@ export const AmountInput = styled.input`
   width: 120px;
   height: 44px;
   margin-bottom: 24px;
+  color: #407bff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
 `;
 export const ButtonSubmit = styled.button`
-  margin-top: 16px;
+  /* margin-top: 16px; */
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   color: #fff;
   background-color: #407bff;
@@ -80,7 +129,12 @@ export const ButtonSubmit = styled.button`
   padding: 8px 30px;
   width: 256px;
   height: 36px;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+  }
 `;
+
 export const AccentWrapper = styled.div`
   background-color: #d7e3ff;
   border-radius: 40px;
@@ -93,4 +147,17 @@ export const CounterBox = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+`;
+
+export const BottomBox = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 24px;
+  }
 `;

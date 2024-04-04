@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import TimePicker from '../TimePicker/TimePicker';
 import sprite from '../../assets/images/sprite/horodiukIcons.svg';
-import css from './AddWaterModal.module.css';
 import {
   Wrapper,
   Container,
@@ -17,6 +17,7 @@ import {
   AccentWrapper,
   CounterBox,
   TimeInput,
+  BottomBox,
 } from './AddWaterModal.styled';
 
 Modal.setAppElement('#root');
@@ -39,7 +40,7 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
         break;
     }
 
-    setTime(currentTime.getTime());
+    setTime(currentTime);
   };
   const handleAddWater = () => {
     console.log({ amount, date: Date(time) });
@@ -67,95 +68,88 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
     const value = parseInt(e.target.value > 0 ? e.target.value : 0, 10);
     setCurrentAmount(value);
   };
-  const modalStyle = {
-    overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      overflow: 'scroll',
-    },
 
-    content: {
-      // transform: 'translateX(-50%)',
-      position: 'absolute',
-      padding: '24px 12px',
-      inset: '40px auto auto 50%',
-      top: '0',
-      border: 'none',
-      borderRadius: '10px',
-      width: '280px',
-      backgroundColor: '#fff',
+  const handleOffIsEditTime = e => {
+    if (e.target.closest('#selectTimeWrapper')) return;
 
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-    },
+    setIsEditTime(false);
+    if (e.target === e.currentTarget) handleClose();
   };
 
-  return (
-    <Modal
-      className={css.addWaterModal}
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      style={modalStyle}
-    >
-      <Wrapper
-        onClick={e => {
-          if (e.target.closest('#selectTimeWrapper')) return;
-          setIsEditTime(false);
-        }}
-      >
-        <Container>
-          <ButtonClose onClick={handleClose}>
-            <svg width="24" height="24">
-              <use href={`${sprite}#icon-close`}></use>
+  const handleKeyDown = event => {
+    if (event.key === 'Escape') {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const getFormattedDate = dateString => {
+    const date = new Date(dateString);
+    const padTo2Digits = num => num.toString().padStart(2, '0');
+    return `${padTo2Digits(date.getHours())}:${padTo2Digits(
+      date.getMinutes(),
+    )}`;
+  };
+  return ReactDOM.createPortal(
+    <Wrapper onClick={handleOffIsEditTime}>
+      <Container>
+        <ButtonClose onClick={handleClose}>
+          <svg width="24" height="24">
+            <use href={`${sprite}#icon-close`}></use>
+          </svg>
+        </ButtonClose>
+        <MainTitle>Add water</MainTitle>
+        <BoldText>Choose a value:</BoldText>
+        <NormalText>Amount of water:</NormalText>
+        <CounterBox>
+          <ButtonCounter onClick={decrementAmount}>
+            <svg width="44" height="44">
+              <use href={`${sprite}#icon-minus`}></use>
             </svg>
-          </ButtonClose>
-          <MainTitle>Add water</MainTitle>
-          <BoldText>Choose a value:</BoldText>
-          <NormalText>Amount of water:</NormalText>
-          <CounterBox>
-            <ButtonCounter onClick={decrementAmount}>
-              <svg width="44" height="44">
-                <use href={`${sprite}#icon-minus`}></use>
-              </svg>
-            </ButtonCounter>
-            <AccentWrapper>
-              <AccentText>{amount}ml</AccentText>
-            </AccentWrapper>
-            <ButtonCounter onClick={incrementAmount}>
-              <svg width="44" height="44">
-                <use href={`${sprite}#icon-plus`}></use>
-              </svg>
-            </ButtonCounter>
-          </CounterBox>
-          <NormalText>Recording time:</NormalText>
-          {isEditTime ? (
-            <TimePicker onChange={handleEditTime} value={time}></TimePicker>
-          ) : (
-            <TimeInput
-              type="time"
-              value={new Date(time).toLocaleTimeString('en-GB', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false,
-              })}
-              onChange={() => {}}
-              onFocus={() => setIsEditTime(true)}
-            />
-          )}
-          <BoldText>Enter the value of the water used:</BoldText>
-          <AmountInput
-            value={currentAmount}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            type="number"
-          ></AmountInput>
+          </ButtonCounter>
+          <AccentWrapper>
+            <AccentText>{amount}ml</AccentText>
+          </AccentWrapper>
+          <ButtonCounter onClick={incrementAmount}>
+            <svg width="44" height="44">
+              <use href={`${sprite}#icon-plus`}></use>
+            </svg>
+          </ButtonCounter>
+        </CounterBox>
+        <NormalText>Recording time:</NormalText>
+        {isEditTime ? (
+          <TimePicker onChange={handleEditTime} value={time}></TimePicker>
+        ) : (
+          <TimeInput
+            type="text"
+            aria-label="Choose time"
+            value={getFormattedDate(time)}
+            onChange={() => {}}
+            onFocus={() => setIsEditTime(true)}
+          />
+        )}
+        <BoldText>Enter the value of the water used:</BoldText>
+        <AmountInput
+          value={currentAmount}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          type="number"
+        ></AmountInput>
+        <BottomBox>
           <AccentText>{amount}ml</AccentText>
           <ButtonSubmit onClick={handleAddWater} type="button">
             Save
           </ButtonSubmit>
-        </Container>
-      </Wrapper>
-    </Modal>
+        </BottomBox>
+      </Container>
+    </Wrapper>,
+    document.getElementById('modal-root'),
   );
 }
