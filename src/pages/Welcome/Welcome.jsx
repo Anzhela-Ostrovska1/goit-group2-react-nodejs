@@ -1,7 +1,8 @@
 import { MainComponent } from '../../components/Main/MainComponent/MainComponent';
 import { Wrapper, Section } from './Welcome.styled';
-import AddWaterModal from '../../components/AddWaterModal/AddWaterModal.jsx';
-import EditWaterModal from '../../components/EditWaterModal/EditWaterModal.jsx';
+// не видаляй модалки я іх потім приберу
+// import AddWaterModal from '../../components/AddWaterModal/AddWaterModal.jsx';
+// import EditWaterModal from '../../components/EditWaterModal/EditWaterModal.jsx';
 export default function Welcome() {
   console.log();
   return (
@@ -11,7 +12,7 @@ export default function Welcome() {
           isOpen={true}
           onClose={() => console.log('modal Closed')}
         /> */}
-        <EditWaterModal />
+        {/* <EditWaterModal /> */}
       </div>
       <Wrapper>
         <Section>
