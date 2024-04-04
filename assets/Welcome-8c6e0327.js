@@ -1,4 +1,4 @@
-import{n as e,j as i,u as p,s as a}from"./index-aac1d54a.js";import{b as c,a as l}from"./bg_element_des@2x-04ccc295.js";const g=e.h3`
+import{n as e,j as i,u as p,s as a}from"./index-97a09532.js";import{b as c,a as l}from"./bg_element_des@2x-04ccc295.js";const g=e.h3`
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 12px;
@@ -127,6 +127,7 @@ import{n as e,j as i,u as p,s as a}from"./index-aac1d54a.js";import{b as c,a as 
   height: 36px;
   border-radius: 10px;
   border: none;
+  color: ${({theme:n})=>n.color.primaryWhite};
   background-color: ${({theme:n})=>n.color.primaryAccent};
   box-shadow: ${({theme:n})=>n.boxShadowforButton.normalButton};
   transition: background-color ${({theme:n})=>n.transition.main};
@@ -161,6 +162,7 @@ padding: 0;
     width: 704px;
   }
   @media only screen and (min-width: 1440px) {
+    padding-top: 30px;
     flex-direction: row;
     align-items: flex-end;
     gap: 81px;
@@ -214,7 +216,7 @@ padding: 0;
   }
 
   @media screen and (min-width: ${({theme:n})=>n.breakpoint.desktop}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
-    
     background-image: url(${l});
+    /* height: 582px; */
   }
 `;function H(){return console.log(),i.jsx(L,{children:i.jsx(R,{children:i.jsx(W,{})})})}export{H as default};
