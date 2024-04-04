@@ -1,17 +1,25 @@
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
+import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-import { HomeContainer } from './Home.styled';
+import {
+  HomeContainer,
+  HomeWrapper,
+  LeftContainer,
+  RightContainer,
+} from './Home.styled';
 
 export default function Home() {
   return (
-    <div>
+    <HomeWrapper>
       <HomeContainer>
-        <div>
+        <LeftContainer>
           <DailyNorma />
           <WaterRatioPanel />
-        </div>
-        <div></div>
+        </LeftContainer>
+        <RightContainer>
+          <TodayWaterList />
+        </RightContainer>
       </HomeContainer>
-    </div>
+    </HomeWrapper>
   );
 }
