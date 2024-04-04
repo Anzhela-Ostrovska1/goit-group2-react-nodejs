@@ -73,6 +73,7 @@ export const AmountInput = styled.input`
 export const ButtonSubmit = styled.button`
   margin-top: 16px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  color: #fff;
   background-color: #407bff;
   border-radius: 10px;
   padding: 8px 30px;
