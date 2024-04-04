@@ -5,7 +5,7 @@ export default function Welcome() {
   return (
     <Wrapper>
       <Section>
-        <MainComponent/>
+        <MainComponent />
       </Section>
     </Wrapper>
   );
