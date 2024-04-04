@@ -11,7 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/AuthSlice.jsx';
-import { waterReducer } from './water/waterSlice.jsx';
+import { waterReducer } from './WaterTracker/WaterSlice.jsx';
+
 const PersistConfig = {
   key: 'root',
   storage,
