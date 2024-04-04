@@ -1,4 +1,4 @@
-import{n as e,j as i,u as p,s as a}from"./index-97a09532.js";import{b as c,a as l}from"./bg_element_des@2x-04ccc295.js";const g=e.h3`
+import{n as e,j as i,u as p,s as a}from"./index-0b1a3d0f.js";import{b as c}from"./bg_element_des@1x-1805b66c.js";import{b as l}from"./bg_element_des@2x-cb13cb99.js";const g=e.h3`
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 12px;
@@ -219,4 +219,4 @@ padding: 0;
     background-image: url(${l});
     /* height: 582px; */
   }
-`;function H(){return console.log(),i.jsx(L,{children:i.jsx(R,{children:i.jsx(W,{})})})}export{H as default};
+`;function P(){return console.log(),i.jsx(L,{children:i.jsx(R,{children:i.jsx(W,{})})})}export{P as default};
