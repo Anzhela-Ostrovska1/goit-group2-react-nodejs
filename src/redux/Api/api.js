@@ -35,16 +35,19 @@ export const updateWaterRate = async waterRate => {
   const { data } = await axios.patch('/users/rate', { waterRate });
   return data;
 };
+export const editUserInfo = () => {};
+export const refreshUser = () => {};
+export const updateAvatar = () => {};
 
 // Water
 
-export const addWater = async (amount, date) => {
+export const addWater = async ({ amount, date }) => {
   const { data } = await axios.post('/water', { amount, date });
   return data;
 };
 
-export const editWater = async (waterID, amount, date) => {
-  const { data } = await axios.put(`/water/${waterID}`, { amount, date });
+export const editWater = async ({ id, amount, date }) => {
+  const { data } = await axios.put(`/water/${id}`, { amount, date });
   return data;
 };
 
