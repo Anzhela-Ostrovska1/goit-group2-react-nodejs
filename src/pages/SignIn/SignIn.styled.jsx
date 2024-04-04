@@ -8,7 +8,8 @@ import bgDes1x from '../../assets/images/background/main/bg_element_des@1x.png';
 import bgDes2x from '../../assets/images/background/main/bg_element_des@2x.png'
 
 export const Section = styled.section`
-  /* padding-top: 24px; */
+ padding: 24px 0 40px;
+  
   background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
@@ -21,10 +22,12 @@ export const Section = styled.section`
     background-image: url(${bgMob2x});
   }
    @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    padding: 40px 0 50px;
     background-image: url(${bgTab1x});
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
+    padding: 50px 0 109px;
     background-image: url(${bgTab2x});
   }
 
