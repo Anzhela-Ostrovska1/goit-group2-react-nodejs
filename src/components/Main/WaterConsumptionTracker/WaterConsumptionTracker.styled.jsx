@@ -81,6 +81,7 @@ export const Button = styled.button`
   height: 36px;
   border-radius: 10px;
   border: none;
+  color: ${({ theme }) => theme.color.primaryWhite};
   background-color: ${({ theme }) => theme.color.primaryAccent};
   box-shadow: ${({ theme }) => theme.boxShadowforButton.normalButton};
   transition: background-color ${({theme}) => theme.transition.main};

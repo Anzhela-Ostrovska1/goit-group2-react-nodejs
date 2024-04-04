@@ -57,7 +57,7 @@ export const Section = styled.section`
   }
 
   @media screen and (min-width: ${({ theme }) =>theme.breakpoint.desktop}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
-    
     background-image: url(${bgDes2x});
+    /* height: 582px; */
   }
 `;

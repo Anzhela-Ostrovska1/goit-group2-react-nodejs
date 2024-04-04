@@ -1,30 +1,43 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
+import sprite from 'src/assets/images/sprite/sprite.svg';
 import {
   BottleBg,
   FormContainer,
-  SigninContainer,
+  SignupContainer,
   StyledLink,
-} from '../SignInForm/SignInForm.styled';
+  Field,
+  Form,
+  ErrorMessage,
+  EyeIcon,
+  FormTitle,
+  StyledLabel,
+  FormButton,
+} from './SignUpForm.styled';
+import { useState } from 'react';
 const validationSchema = Yup.object({
   email: Yup.string('Enter your email')
     .email('Enter a valid email')
     .matches(/^[^\s@]+@[^\s@]+.[^\s@]+$/, 'Email is not valid')
     .required('Email is required'),
   password: Yup.string()
-    .required('Password is required')
-    .min(8, 'Your password is too short.')
-    .matches(/[a-zA-Z]/, 'Password should contain at least one Latin letters.'),
+    .min(7, 'Your password is too short.')
+    .matches(/^\S*$/, 'Password should not contain spaces.')
+    .required('Password is required'),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Password must match!')
+    .oneOf([Yup.ref('password'), null], 'Entered passwords must match')
     .required('Confirm password is reqired!'),
 });
 export const SignUpForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
-    <SigninContainer>
+    <SignupContainer>
       <BottleBg />
       <FormContainer>
-        <h1>Sign Up</h1>
+        <FormTitle>Sign Up</FormTitle>
         <Formik
           initialValues={{
             email: '',
@@ -38,24 +51,55 @@ export const SignUpForm = () => {
           }}
         >
           <Form>
-            <label htmlFor="email">Enter your email</label>
-            <Field id="email" name="email" placeholder="E-mail" />
+            <StyledLabel>
+              Enter your email
+              <Field type="email" name="email" placeholder="E-mail" />
+              <ErrorMessage name="email" component="span" />
+            </StyledLabel>
 
-            <label htmlFor="password">Enter your password</label>
-            <Field id="password" name="password" placeholder="Password" />
+            <StyledLabel>
+              Enter your password
+              <Field
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Password"
+              />
+              <ErrorMessage name="password" component="span" />
+              {!showPassword ? (
+                <EyeIcon onClick={handleTogglePassword}>
+                  <use href={`${sprite}#icon-closed-eye`}></use>
+                </EyeIcon>
+              ) : (
+                <EyeIcon onClick={handleTogglePassword}>
+                  <use href={`${sprite}#icon-eye`}></use>
+                </EyeIcon>
+              )}
+            </StyledLabel>
 
-            <label htmlFor="confirmPassword">Repeat password</label>
-            <Field
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Repeat password"
-              type="password"
-            />
-            <button type="submit">Sign Up</button>
+            <StyledLabel>
+              Repeat password
+              <Field
+                name="confirmPassword"
+                placeholder="Repeat password"
+                type={showPassword ? 'text' : 'password'}
+              />
+              <ErrorMessage name="confirmPassword" component="span" />
+              {!showPassword ? (
+                <EyeIcon onClick={handleTogglePassword}>
+                  <use href={`${sprite}#icon-closed-eye`}></use>
+                </EyeIcon>
+              ) : (
+                <EyeIcon onClick={handleTogglePassword}>
+                  <use href={`${sprite}#icon-eye`}></use>
+                </EyeIcon>
+              )}
+            </StyledLabel>
+
+            <FormButton type="submit">Sign Up</FormButton>
           </Form>
         </Formik>
         <StyledLink to="/signin">Sign In</StyledLink>
       </FormContainer>
-    </SigninContainer>
+    </SignupContainer>
   );
 };
