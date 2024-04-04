@@ -1,4 +1,6 @@
-import { Select, Wrapper } from './TimePicker.styled';
+import sprite from '../../assets/images/sprite/horodiukIcons.svg';
+
+import { Select, Wrapper, SelectBox, Icon } from './TimePicker.styled';
 export default function TimePicker({ onChange, value }) {
   const hours = Array.from(new Array(24), (val, index) => index);
   const minutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
@@ -27,21 +29,31 @@ export default function TimePicker({ onChange, value }) {
 
   return (
     <Wrapper id="selectTimeWrapper">
-      <Select onChange={e => onChange(e, 'hour')} value={valueHour}>
-        {hours.map(hour => (
-          <option key={hour} value={hour}>
-            {hour.toString().padStart(2, '0')}
-          </option>
-        ))}
-      </Select>
+      <SelectBox>
+        <Select onChange={e => onChange(e, 'hour')} value={valueHour}>
+          {hours.map(hour => (
+            <option key={hour} value={hour}>
+              {hour.toString().padStart(2, '0')}
+            </option>
+          ))}
+        </Select>
+        <Icon width="24" height="24">
+          <use href={`${sprite}#icon-arrow`}></use>
+        </Icon>
+      </SelectBox>
       :
-      <Select onChange={e => onChange(e, 'minute')} value={valueMinute}>
-        {minutes.map(minute => (
-          <option key={minute} value={minute}>
-            {minute.toString().padStart(2, '0')}
-          </option>
-        ))}
-      </Select>
+      <SelectBox>
+        <Select onChange={e => onChange(e, 'minute')} value={valueMinute}>
+          {minutes.map(minute => (
+            <option key={minute} value={minute}>
+              {minute.toString().padStart(2, '0')}
+            </option>
+          ))}
+        </Select>
+        <Icon width="24" height="24">
+          <use href={`${sprite}#icon-arrow`}></use>
+        </Icon>
+      </SelectBox>
     </Wrapper>
   );
 }
