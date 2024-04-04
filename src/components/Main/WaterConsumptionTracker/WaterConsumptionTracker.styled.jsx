@@ -4,23 +4,22 @@ export const Container = styled.div`
   max-width: 280px;
   margin: auto;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     max-width: 100%;
     margin: 0;
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     min-width: 439px;
   }
 `;
 export const Heading = styled.h2`
-  font-family: 'Roboto', sans-serif;
   font-size: 28px;
   font-weight: 700;
   line-height: 32px;
   vertical-align: top;
   margin-bottom: 16px;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 36px;
     line-height: 42px;
   }
@@ -30,7 +29,7 @@ export const Title = styled.h3`
   font-weight: 400;
   line-height: 30px;
   margin-bottom: 24px;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: 26px;
     line-height: 32px;
   }
@@ -50,12 +49,12 @@ export const List = styled.ul`
   line-height: 20px;
   margin-bottom: 24px;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     flex-direction: column;
     justify-content: center;
   }
@@ -68,7 +67,7 @@ export const Item = styled.li`
 export const Icon = styled.svg`
   width: 32px;
   height: 32px;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     width: 40px;
     height: 40px;
   }
@@ -82,16 +81,24 @@ export const Button = styled.button`
   height: 36px;
   border-radius: 10px;
   border: none;
-  cursor: pointer;
-  @media only screen and (min-width: 768px) {
+  background-color: ${({ theme }) => theme.color.primaryAccent};
+  box-shadow: ${({ theme }) => theme.boxShadowforButton.normalButton};
+  transition: background-color ${({theme}) => theme.transition.main};
+
+  &:hover, &:focus  {
+    box-shadow: ${({ theme }) => theme.boxShadowforButton.hoverButton};
+  }
+  &:active {
+    box-shadow: ${({ theme }) => theme.boxShadowforButton.activeButton};
+  }
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     width: 336px;
     height: 44px;
     padding: 10px 30px;
     font-size: 18px;
     line-height: 24px;
   }
-  @media only screen and (min-width: 1440px) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     width: 384px;
-    height: 44px;
   }
 `;
