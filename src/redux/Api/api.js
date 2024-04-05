@@ -12,14 +12,14 @@ const unsetToken = () => {
 
 // Auth
 
-export const signup = async (email, password) => {
-  const { data } = await axios.post('/users/register', { email, password });
+export const signup = async credentials => {
+  const { data } = await axios.post('/users/register', credentials);
   setToken(data.token);
   return data;
 };
 
-export const signin = async (email, password) => {
-  const { data } = await axios.post('/users/login', { email, password });
+export const signin = async credentials => {
+  const { data } = await axios.post('/users/login', credentials);
   setToken(data.token);
   return data;
 };
