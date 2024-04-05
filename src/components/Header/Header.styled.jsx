@@ -5,13 +5,13 @@ export const MainContainer = styled.div`
   padding-left: 20px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    width: 768px;
+    /* width: 768px; */
     padding-right: 32px;
     padding-left: 32px;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    width: 1440px;
+    /* width: 1440px; */
     padding-right: 120px;
     padding-left: 120px;
   }
@@ -30,7 +30,6 @@ export const Wrapper = styled.div`
   }
   @media only screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     /* margin-bottom: 50px; */
-    /* margin-bottom: 30px; */
     padding-top: 12px;
   }
 `;

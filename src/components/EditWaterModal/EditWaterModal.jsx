@@ -18,17 +18,26 @@ import {
   CounterBox,
   TimeInput,
   BottomBox,
-} from './AddWaterModal.styled';
-import { addWaterThunk } from '../../redux/water/waterOperations';
-import { useDispatch } from 'react-redux';
+  BoxPrevInfo,
+  AccentRegularText,
+  NormalTextWithoutMargin,
+} from './EditWaterModal.styled';
+import { editWaterThunk } from '../../redux/water/waterOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentNote } from '../../redux/water/waterSelectors';
 
 Modal.setAppElement('#root');
-export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
-  const [amount, setAmount] = useState(0);
+export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
+  const currentNote = useSelector(selectCurrentNote) || {
+    amount: 250,
+    date: new Date(),
+  };
+
+  const [amount, setAmount] = useState(currentNote.amount);
   const [isEditTime, setIsEditTime] = useState(false);
   const [currentAmount, setCurrentAmount] = useState(0);
   const dispatch = useDispatch();
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(currentNote.date);
   const handleEditTime = (e, type = '') => {
     let currentTime = new Date(time);
 
@@ -46,7 +55,7 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
     setTime(currentTime);
   };
   const handleAddWater = () => {
-    dispatch(addWaterThunk({ amount, date: Date(time) }));
+    dispatch(editWaterThunk({ amount, date: Date(time) }));
   };
   const handleClose = () => {
     onClose();
@@ -108,8 +117,18 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
             <use href={`${sprite}#icon-close`}></use>
           </svg>
         </ButtonClose>
-        <MainTitle>Add water</MainTitle>
-        <BoldText>Choose a value:</BoldText>
+        <MainTitle>Edit the entered amount of water</MainTitle>
+        <BoxPrevInfo>
+          {' '}
+          <svg width="36" height="36">
+            <use href={`${sprite}#icon-glass`}></use>
+          </svg>
+          <AccentRegularText>{currentNote.amount}ml</AccentRegularText>
+          <NormalTextWithoutMargin>
+            {getFormattedDate(currentNote.time)}
+          </NormalTextWithoutMargin>
+        </BoxPrevInfo>
+        <BoldText>Correct entered data:</BoldText>
         <NormalText>Amount of water:</NormalText>
         <CounterBox>
           <ButtonCounter onClick={decrementAmount}>

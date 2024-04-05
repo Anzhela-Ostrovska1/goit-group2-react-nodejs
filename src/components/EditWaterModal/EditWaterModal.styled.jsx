@@ -161,3 +161,23 @@ export const BottomBox = styled.div`
     gap: 24px;
   }
 `;
+export const BoxPrevInfo = styled.div`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  padding: 8px 24px;
+  width: 256px;
+  background-color: #ecf2ff;
+`;
+export const AccentRegularText = styled.p`
+  font-size: 18px;
+  line-height: 133%;
+  color: #407bff;
+`;
+export const NormalTextWithoutMargin = styled.p`
+  font-size: 16px;
+  line-height: 125%;
+  color: #2f2f2f;
+`;
