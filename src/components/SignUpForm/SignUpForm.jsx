@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
 import sprite from 'src/assets/images/sprite/sprite.svg';
 import {
   BottleBg,
@@ -37,22 +36,21 @@ export const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-  const handleSubmit = async (values, { setSubmitting }) => {
-    const { email, password } = values;
-    try {
-      await dispatch(registerThunk({ email, password }));
-      navigate('/signin');
-    } catch (error) {
-      console.error(error);
-      // Обработка ошибок?
-    }
-    setSubmitting(false);
-  };
+  // const handleSubmit = async (values, { setSubmitting }) => {
+  //   const { email, password } = values;
+  //   try {
+  //     await dispatch(registerThunk({ email, password }));
+  //     navigate('/signin');
+  //   } catch (error) {
+  //     console.error(error);
+  //     // Обработка ошибок?
+  //   }
+  //   setSubmitting(false);
+  // };
 
   return (
     <SignupContainer>
@@ -60,13 +58,17 @@ export const SignUpForm = () => {
       <FormContainer>
         <FormTitle>Sign Up</FormTitle>
         <Formik
+          validateOnChange
           initialValues={{
             email: '',
             password: '',
             confirmPassword: '',
           }}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
+          onSubmit={({ email, password }) => {
+            dispatch(registerThunk({ email, password }));
+          }}
         >
           <Form>
             <StyledLabel>
