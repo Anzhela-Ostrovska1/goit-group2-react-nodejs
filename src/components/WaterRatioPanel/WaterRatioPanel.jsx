@@ -14,7 +14,7 @@ const WaterRatioPanel = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  const value = 70;
+  const value = 95;
   const openModal = () => {
     setIsModalOpen(true);
   };

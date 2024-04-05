@@ -95,9 +95,15 @@ export const HomeContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
+  padding: 24px 8px;
+  background-color: #ecf2ff;
+  box-shadow: 0px 4px 14px 0px #407bff4d;
+  border-radius: 10px;
   @media screen and (min-width: 768px) {
+    padding: 32px 24px;
   }
 
   @media screen and (min-width: 1440px) {
+    width: 50%;
   }
 `;
