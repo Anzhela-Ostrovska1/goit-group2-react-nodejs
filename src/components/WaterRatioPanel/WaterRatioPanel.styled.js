@@ -96,7 +96,7 @@ export const WaterPercentage = styled.div`
       justify-content: center;
       align-items: center;
     }
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       color: #407bff;
       line-height: 20px;
       font-size: 16px;
