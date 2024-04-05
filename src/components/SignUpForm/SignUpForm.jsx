@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import sprite from 'src/assets/images/sprite/sprite.svg';
 import {
   BottleBg,
@@ -15,6 +16,10 @@ import {
   FormButton,
 } from './SignUpForm.styled';
 import { useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { registerThunk } from '../../redux/Auth/AuthOperations.jsx';
+
 const validationSchema = Yup.object({
   email: Yup.string('Enter your email')
     .email('Enter a valid email')
@@ -30,9 +35,25 @@ const validationSchema = Yup.object({
 });
 export const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+  const handleSubmit = async (values, { setSubmitting }) => {
+    const { email, password } = values;
+    try {
+      await dispatch(registerThunk({ email, password }));
+      navigate('/signin');
+    } catch (error) {
+      console.error(error);
+      // Обработка ошибок?
+    }
+    setSubmitting(false);
+  };
+
   return (
     <SignupContainer>
       <BottleBg />
@@ -45,10 +66,7 @@ export const SignUpForm = () => {
             confirmPassword: '',
           }}
           validationSchema={validationSchema}
-          onSubmit={async values => {
-            await new Promise(r => setTimeout(r, 500));
-            alert(JSON.stringify(values, null, 2));
-          }}
+          onSubmit={handleSubmit}
         >
           <Form>
             <StyledLabel>
