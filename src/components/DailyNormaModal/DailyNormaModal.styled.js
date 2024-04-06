@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 
 export const DailyNormaModalContainer = styled.div`
+  position: absolute;
+  background-color: #ffffff;
   width: 280px;
   height: 816px;
   top: 40px;
-  left: 20px;
   padding: 24px 12px 24px 12px;
   display: flex;
   flex-direction: column;
@@ -14,7 +15,6 @@ export const DailyNormaModalContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 696px;
-    left: 32px;
     padding: 32px 24px 32px 24px;
   }
 
@@ -40,7 +40,6 @@ export const DailyNormaModalContainer = styled.div`
   .formula {
     display: flex;
     flex-direction: column;
-    height: 64px;
     gap: 16px;
     @media screen and (min-width: 768px) {
       flex-direction: row;
@@ -145,9 +144,23 @@ export const DailyNormaModalContainer = styled.div`
       align-self: flex-end;
     }
   }
+  .saveButton:hover {
+    cursor: pointer;
+  }
 
   input::placeholder {
     color: #407bff;
     size: 16px;
+  }
+
+  .closeButton {
+    /* background: transparent; */
+    /* position: absolute; */
+  }
+  .icon-Vector {
+    /* color: #407bff; */
+    fill: 407bff;
+
+    /* stroke: #407bff; */
   }
 `;
