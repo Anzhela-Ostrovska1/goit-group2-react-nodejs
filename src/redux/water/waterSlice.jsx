@@ -15,6 +15,7 @@ export const initialState = {
   currentNote: null,
   isLoading: false,
   isError: null,
+  isModalOpen: false,
 };
 
 const waterSlice = createSlice({
