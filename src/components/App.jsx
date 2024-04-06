@@ -1,7 +1,10 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUserThunk } from '../redux/Auth/AuthOperations';
+import { selectIsRefreshing } from '../redux/Auth/AuthSelectors';
 import Loader from './common/Loader/Loader';
 
 import SharedLayout from './SharedLayout';
@@ -13,7 +16,12 @@ const SignUpPage = lazy(() => import('../pages/SignUp/SignUp'));
 const ErrorPage = lazy(() => import('../pages/Error/Error'));
 
 const App = () => {
-  const isRefreshing = false;
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUserThunk());
+  }, [dispatch]);
 
   return !isRefreshing ? (
     <Routes>
