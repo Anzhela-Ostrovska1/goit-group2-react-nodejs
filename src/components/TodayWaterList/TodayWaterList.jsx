@@ -11,6 +11,8 @@ import EditWaterModal from '../EditWaterModal/EditWaterModal';
 import {
   AddButton,
   Amount,
+  DeleteButton,
+  EditButton,
   Time,
   Title,
   WaterList,
@@ -70,12 +72,15 @@ const TodayWaterList = () => {
                       <Time>{time}</Time>
                     </WaterPortion>
                     <div>
-                      <button type="button" onClick={openEditModal}>
+                      <EditButton type="button" onClick={openEditModal}>
                         <img src={edit} alt="Icon glass" />
-                      </button>
-                      <button type="button" onClick={() => deleteWaterNote(id)}>
+                      </EditButton>
+                      <DeleteButton
+                        type="button"
+                        onClick={() => deleteWaterNote(id)}
+                      >
                         <img src={delite} alt="Icon glass" />
-                      </button>
+                      </DeleteButton>
                     </div>
                   </WaterListItem>
                   {editModalOpen && (
