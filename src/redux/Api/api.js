@@ -55,10 +55,20 @@ export const deleteWater = async waterID => {
   await axios.delete(`/water/${waterID}`);
 };
 
-export const fetchTodayWater = async () => {
-  return await axios.get('/water/today');
+export const fetchCurrentWater = async waterID => {
+  const { data } = await axios.get(`/water/${waterID}`);
+  return data;
 };
 
-export const fetchMonthWater = async (month, year) => {
-  return await axios.get(`/water/month?month=${month}&year=${year}`);
+export const fetchTodayWater = async () => {
+  const { data } = await axios.get('/water/today');
+  return data;
+};
+
+export const fetchMonthWater = async ({ month, year }) => {
+  console.log('month', typeof month, month);
+  console.log('year', typeof year, year);
+  // console.log('month, year', month, year);
+  const { data } = await axios.get(`/water/month`, { month, year });
+  return data;
 };

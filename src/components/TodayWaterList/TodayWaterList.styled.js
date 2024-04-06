@@ -56,6 +56,7 @@ export const Title = styled.h2`
 `;
 
 export const AddButton = styled.button`
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,4 +71,13 @@ export const AddButton = styled.button`
     font-size: 18px;
     line-height: 24px;
   }
+`;
+
+export const EditButton = styled.button`
+  margin-right: 18px;
+  background-color: transparent;
+`;
+
+export const DeleteButton = styled.button`
+  background-color: transparent;
 `;

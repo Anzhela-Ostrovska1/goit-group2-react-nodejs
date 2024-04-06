@@ -29,6 +29,8 @@ export const HomeWrapper = styled.div`
 `;
 
 export const LeftContainer = styled.div`
+  margin-bottom: 40px;
+  margin-top: 20px;
   background-size: 280px 208px;
   background-position: center;
   background-repeat: no-repeat;
@@ -95,6 +97,8 @@ export const HomeContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
+  margin-bottom: 40px;
+  margin-top: 20px;
   padding: 24px 8px;
   background-color: #ecf2ff;
   box-shadow: 0px 4px 14px 0px #407bff4d;
