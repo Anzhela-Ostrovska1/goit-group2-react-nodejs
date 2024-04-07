@@ -35,9 +35,18 @@ export const updateWaterRate = async waterRate => {
   const { data } = await axios.patch('/users/rate', { waterRate });
   return data;
 };
-export const editUserInfo = () => {};
+
+export const editUserInfo = async userData => {
+  const { data } = await axios.patch('/users/current', { userData });
+  return data;
+};
+
+export const updateAvatar = async avatar => {
+  const { data } = await axios.patch('/users/current', { avatar });
+  return data;
+};
+
 export const refreshUser = () => {};
-export const updateAvatar = () => {};
 
 // Water
 
