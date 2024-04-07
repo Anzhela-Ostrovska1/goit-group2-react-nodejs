@@ -42,6 +42,14 @@ export const DailyNormaContainer = styled.div`
       color: #ff9d43;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 30px;
+  }
 `;
 
 export const DailyNormaWrapper = styled.div`
