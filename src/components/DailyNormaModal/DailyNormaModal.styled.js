@@ -1,17 +1,29 @@
 import styled from '@emotion/styled';
 
+export const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+`;
+
 export const DailyNormaModalContainer = styled.div`
+  overflow: auto;
   position: absolute;
   background-color: #ffffff;
   width: 280px;
-  height: 816px;
+  max-height: 90vh;
   top: 40px;
+  left: 50%;
   padding: 24px 12px 24px 12px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   border-radius: 10px;
-  margin: auto;
+  transform: translateX(-50%);
+
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 696px;
@@ -22,7 +34,6 @@ export const DailyNormaModalContainer = styled.div`
     width: 592px;
     height: 712px;
     top: 44px;
-    left: 424px;
   }
 
   h2 {
@@ -35,6 +46,17 @@ export const DailyNormaModalContainer = styled.div`
     display: flex;
     justify-content: space-between;
     height: 32px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #2f2f2f;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   .formula {
@@ -121,8 +143,12 @@ export const DailyNormaModalContainer = styled.div`
     text-align: left;
     color: #407bff;
   }
+
   .amountDescription {
     width: 190px;
+    @media screen and (min-width: 768px) {
+      width: auto;
+    }
   }
   .inputForm {
     height: 44px;
@@ -154,13 +180,7 @@ export const DailyNormaModalContainer = styled.div`
   }
 
   .closeButton {
-    /* background: transparent; */
+    background: transparent;
     /* position: absolute; */
-  }
-  .icon-Vector {
-    /* color: #407bff; */
-    fill: 407bff;
-
-    /* stroke: #407bff; */
   }
 `;
