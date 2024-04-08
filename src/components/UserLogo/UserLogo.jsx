@@ -16,7 +16,7 @@ import { selectUser } from '../../redux/Auth/AuthSelectors';
 
 export const UserLogo = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const { email, name, avatarURL } = useSelector(selectUser);
+  // const { email, name, avatarURL } = useSelector(selectUser);
 
   const popoverRef = useRef(null);
   const handleTogglePopover = () => {
@@ -41,41 +41,41 @@ export const UserLogo = () => {
     };
   }, [isPopoverOpen]);
 
-  const firstLetters = name
-    ? name.slice(0, 2).toUpperCase()
-    : email.slice(0, 2).toUpperCase();
+  // const firstLetters = name
+  //   ? name.slice(0, 2).toUpperCase()
+  //   : email.slice(0, 2).toUpperCase();
 
-  const getUser = () => {
-    if (name && avatarURL) {
-      return {
-        userName: name,
-        avatar: avatarURL,
-      };
-    } else if (name || avatarURL) {
-      return {
-        userName: name || firstLetters,
-        avatar: avatarURL || firstLetters,
-      };
-    } else {
-      return {
-        userName: firstLetters,
-        avatar: firstLetters,
-      };
-    }
-  };
+  // const getUser = () => {
+  //   if (name && avatarURL) {
+  //     return {
+  //       userName: name,
+  //       avatar: avatarURL,
+  //     };
+  //   } else if (name || avatarURL) {
+  //     return {
+  //       userName: name || firstLetters,
+  //       avatar: avatarURL || firstLetters,
+  //     };
+  //   } else {
+  //     return {
+  //       userName: firstLetters,
+  //       avatar: firstLetters,
+  //     };
+  //   }
+  // };
 
-  const { userName, avatar } = getUser();
+  // const { userName, avatar } = getUser();
 
   return (
     <div ref={popoverRef}>
       <StyledBtn onClick={handleTogglePopover}>
-        <User>{userName}</User>
+        {/* <User>{userName}</User> */}
         <AvatarContainer>
-          {avatarURL ? (
+          {/* {avatarURL ? (
             <LogoAvatar src={avatar} alt="user-avatar" />
           ) : (
             <UserDefaultAvatar>{avatar}</UserDefaultAvatar>
-          )}
+          )} */}
 
           <PopIcon
             style={{ transform: isPopoverOpen ? 'rotate(180deg)' : 'none' }}
