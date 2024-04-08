@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/Auth/AuthSelectors';
+import { selectNotes } from '../../redux/water/waterSelectors';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import {
   WaterRatioContainer,
@@ -11,13 +14,27 @@ import {
 
 const WaterRatioPanel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [value, setValue] = useState(0);
+  const notes = useSelector(selectNotes);
+
+  const { waterRate } = useSelector(selectUser);
+
+  useEffect(() => {
+    const sum = notes.reduce((acc, cur) => {
+      return acc + cur.amount;
+    }, 0);
+    const rate = Math.round((sum / waterRate) * 100);
+    setValue(rate);
+  }, [notes, waterRate]);
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  const value = 95;
+
   const openModal = () => {
     setIsModalOpen(true);
   };
+
   return (
     <WaterRatioContainer>
       <RatioScale>
