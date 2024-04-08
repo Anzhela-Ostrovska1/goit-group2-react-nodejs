@@ -132,6 +132,12 @@ export const SettingsModal = ({ onClose, onShow }) => {
     setIsPasswordShown(previsPasswordShown => !previsPasswordShown);
   };
 
+ 
+ 
+ 
+ 
+ 
+ 
   const handleAvatarDownload = e => {
     let formData = new FormData();
     formData.append('avatar', e.target.files[0]);
