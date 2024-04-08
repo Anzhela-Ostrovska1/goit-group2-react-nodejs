@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import {
   calculateBoxPositionX,
   calculateBoxPositionY,
@@ -20,15 +20,15 @@ export const DayStatsContainer = styled.div`
   height: 188px;
   padding: 24px 13px;
   border-radius: 10px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.color.primaryWhite};
   box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
 
   p {
-    color: #2f2f2f;
+    color: ${({ theme }) => theme.color.primaryBlack};
     line-height: 1.25;
 
     span {
-      color: #407bff;
+      color: ${({ theme }) => theme.color.primaryAccent};
       font-size: 18px;
       font-weight: 500;
       line-height: 1.33;
@@ -58,7 +58,7 @@ export const UpperElem = styled.div`
   width: 100%;
 
   p {
-    color: #407bff;
+    color: ${({ theme }) => theme.color.primaryAccent};
     font-size: 16px;
     line-height: 1.25;
   }
