@@ -1,4 +1,4 @@
-import{n as t,j as n,u as d,s,a as c,b as l,r as g,c as x,d as m}from"./index-43d944af.js";import{b as h}from"./bg_element_des@1x-1805b66c.js";import{b}from"./bg_element_des@2x-cb13cb99.js";const u=t.h3`
+import{n as t,j as n,u as d,s,a as c,b as l,r as g,c as x,d as m}from"./index-35d78900.js";import{b as h}from"./bg_element_des@1x-1805b66c.js";import{b}from"./bg_element_des@2x-cb13cb99.js";const u=t.h3`
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 12px;
@@ -148,7 +148,7 @@ import{n as t,j as n,u as d,s,a as c,b as l,r as g,c as x,d as m}from"./index-43
   @media only screen and (min-width: ${({theme:e})=>e.breakpoint.desktop}) {
     width: 384px;
   }
-`,C=()=>{const e=d(),a=()=>{e("/signup")},i=[{text:"Habit drive",id:`${s}#icon-calendar-days`},{text:"View statistics",id:`${s}#icon-presentation-chart-bar`},{text:"Personal rate setting",id:`${s}#icon-wrench-screwdriver`}];return n.jsxs(j,{children:[n.jsx(v,{children:"Water consumption tracker"}),n.jsx(z,{children:"Record daily water intake and track"}),n.jsx(_,{children:"Tracker Benefits"}),n.jsx(B,{children:i.map(({id:r,text:o},p)=>n.jsxs(T,{children:[n.jsx(W,{children:n.jsx("use",{href:r})}),o]},p))}),n.jsx(S,{type:"button",onClick:a,children:"Try tracker"})]})},M=t.div`
+`,C=()=>{const e=d(),a=()=>{e("/signup")},i=[{text:"Habit drive",id:`${s}#icon-calendar-days`},{text:"View statistics",id:`${s}#icon-presentation-chart-bar`},{text:"Personal rate setting",id:`${s}#icon-wrench-screwdriver`}];return n.jsxs(j,{children:[n.jsx(v,{children:"Water consumption tracker"}),n.jsx(z,{children:"Record daily water intake and track"}),n.jsx(_,{children:"Tracker Benefits"}),n.jsx(B,{children:i.map(({id:r,text:o},p)=>n.jsxs(T,{children:[n.jsx(W,{children:n.jsx("use",{href:r})}),o]},p))}),n.jsx(S,{type:"button",onClick:a,children:"Try tracker"})]})},D=t.div`
 display: flex;
 margin: auto;
 flex-direction: column;
@@ -169,7 +169,7 @@ padding: 0;
     width: 1014px;
 
   }
-`,D=()=>n.jsxs(M,{children:[n.jsx(C,{}),n.jsx(y,{})]}),P="/goit-group2-react-nodejs/assets/bg_img_mob@1x-c5c3006f.png",E="/goit-group2-react-nodejs/assets/bg_img_mob@2x-cab432e7.png",I="/goit-group2-react-nodejs/assets/bg_img_tab@1x-ae218387.png",L="/goit-group2-react-nodejs/assets/bg_img_tab@2x-6c4f8ac4.png",R="/goit-group2-react-nodejs/assets/bg_img_des@1x-b6cc26cc.png",A="/goit-group2-react-nodejs/assets/bg_img_des@2x-168beeb7.png",H=t.div`
+`,M=()=>n.jsxs(D,{children:[n.jsx(C,{}),n.jsx(y,{})]}),P="/goit-group2-react-nodejs/assets/bg_img_mob@1x-c5c3006f.png",E="/goit-group2-react-nodejs/assets/bg_img_mob@2x-cab432e7.png",I="/goit-group2-react-nodejs/assets/bg_img_tab@1x-ae218387.png",L="/goit-group2-react-nodejs/assets/bg_img_tab@2x-6c4f8ac4.png",R="/goit-group2-react-nodejs/assets/bg_img_des@1x-b6cc26cc.png",A="/goit-group2-react-nodejs/assets/bg_img_des@2x-168beeb7.png",H=t.div`
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -219,4 +219,4 @@ padding: 0;
     background-image: url(${b});
     /* height: 582px; */
   }
-`;function q(){const e=c(),i=l()[0].get("token"),r=d();return console.log(i),g.useEffect(()=>{if(i)try{e(x(i)),e(m()).then(o=>{o.error||r("/home")})}catch(o){console.log(o.message)}},[e,r,i]),n.jsxs(H,{children:[n.jsx(SettingsModal,{}),n.jsx(N,{children:n.jsx(D,{})})]})}export{q as default};
+`;function q(){const e=c(),i=l()[0].get("token"),r=d();return g.useEffect(()=>{if(i)try{e(x(i)),e(m()).then(o=>{o.error||r("/home")})}catch(o){console.log(o.message)}},[e,r,i]),n.jsx(H,{children:n.jsx(N,{children:n.jsx(M,{})})})}export{q as default};
