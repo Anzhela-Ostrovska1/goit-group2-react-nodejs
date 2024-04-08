@@ -43,6 +43,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logOutThunk.fulfilled, () => {
+        localStorage.clear()
         return initialState;
       })
       .addCase(updateWaterRateThunk.fulfilled, (state, { payload }) => {
