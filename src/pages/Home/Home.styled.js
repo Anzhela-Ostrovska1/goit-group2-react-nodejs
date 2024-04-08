@@ -24,7 +24,7 @@ export const HomeWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     background: url(${backgroundDesk});
-    min-height: calc(100% - 72px);
+    min-height: calc(-64px + 100vh);
   }
 `;
 

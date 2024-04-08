@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const WaterList = styled.ul`
+  /* overflow-y: overlay; */
   overflow-y: scroll;
   height: 180px;
   display: flex;
@@ -11,6 +12,15 @@ export const WaterList = styled.ul`
   @media screen and (min-width: 768px) {
     height: 176px;
   }
+
+  /* &::-webkit-scrollbar-button:vertical:start:decrement,
+  &::-webkit-scrollbar-button:vertical:end:increment {
+    display: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  } */
 `;
 
 export const WaterListItem = styled.li`
