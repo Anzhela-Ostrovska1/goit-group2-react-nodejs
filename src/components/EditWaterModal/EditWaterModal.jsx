@@ -28,10 +28,7 @@ import { selectCurrentNote } from '../../redux/water/waterSelectors';
 
 Modal.setAppElement('#root');
 export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
-  const currentNote = useSelector(selectCurrentNote) || {
-    amount: 250,
-    date: new Date(),
-  };
+  const currentNote = useSelector(selectCurrentNote);
 
   const [amount, setAmount] = useState(currentNote.amount);
   const [isEditTime, setIsEditTime] = useState(false);
