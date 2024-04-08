@@ -9,26 +9,25 @@ import {
 } from './UserLogoModal.styled';
 
 import { UserLogoutModal } from '../Home/LogOutModal/LogOutModal';
-import  AddWaterModal from '../AddWaterModal/AddWaterModal';
+import { SettingsModal } from '../SettingsModal/SettingsModal';
 
 export const UserLogoModal = () => {
- 
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
-  const [isAddWaterModalOpen, setIsAddWaterModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
   const handleLogOutButtonClick = () => {
     setIsLogOutModalOpen(true);
   };
 
-  const handleAddWaterButtonClick = () => {
-    setIsAddWaterModalOpen(true);
+  const handleSettingsButtonClick = () => {
+    setIsSettingsModalOpen(true);
   };
 
   return (
     <Popover>
       <PopList>
         <PopItem>
-          <PopBtn type="button" onClick={handleAddWaterButtonClick}>
+          <PopBtn type="button" onClick={handleSettingsButtonClick}>
             <PopIcon>
               <use href={`${sprite}#icon-settings`}></use>
             </PopIcon>
@@ -45,7 +44,7 @@ export const UserLogoModal = () => {
         </PopItem>
       </PopList>
       {isLogOutModalOpen && <UserLogoutModal />}
-      {isAddWaterModalOpen && <AddWaterModal />}
+      {isSettingsModalOpen && <SettingsModal />}
     </Popover>
   );
 };
