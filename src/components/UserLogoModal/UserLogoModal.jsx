@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import sprite from '../../assets/images/sprite/sprite.svg';
 import {
   PopBtn,
@@ -6,16 +7,28 @@ import {
   PopList,
   Popover,
 } from './UserLogoModal.styled';
-import { useDispatch } from 'react-redux';
-import { logOutThunk } from '../../redux/Auth/AuthOperations';
+
+import { UserLogoutModal } from '../Home/LogOutModal/LogOutModal';
+import  AddWaterModal from '../AddWaterModal/AddWaterModal';
+
 export const UserLogoModal = () => {
-  const dispatch = useDispatch();
-  const handleLogOut = () => dispatch(logOutThunk());
+ 
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const [isAddWaterModalOpen, setIsAddWaterModalOpen] = useState(false);
+
+  const handleLogOutButtonClick = () => {
+    setIsLogOutModalOpen(true);
+  };
+
+  const handleAddWaterButtonClick = () => {
+    setIsAddWaterModalOpen(true);
+  };
+
   return (
     <Popover>
       <PopList>
         <PopItem>
-          <PopBtn type="button">
+          <PopBtn type="button" onClick={handleAddWaterButtonClick}>
             <PopIcon>
               <use href={`${sprite}#icon-settings`}></use>
             </PopIcon>
@@ -23,7 +36,7 @@ export const UserLogoModal = () => {
           </PopBtn>
         </PopItem>
         <PopItem>
-          <PopBtn type="button" onClick={handleLogOut}>
+          <PopBtn type="button" onClick={handleLogOutButtonClick}>
             <PopIcon>
               <use href={`${sprite}#icon-logout`}></use>
             </PopIcon>
@@ -31,6 +44,8 @@ export const UserLogoModal = () => {
           </PopBtn>
         </PopItem>
       </PopList>
+      {isLogOutModalOpen && <UserLogoutModal />}
+      {isAddWaterModalOpen && <AddWaterModal />}
     </Popover>
   );
 };
