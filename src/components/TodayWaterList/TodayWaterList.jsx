@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaPlus } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectNotes } from '../../redux/water/waterSelectors';
+import {
+  selectCurrentNote,
+  selectNotes,
+} from '../../redux/water/waterSelectors';
 import glass from '../../assets/images/background/home/svg/glass.svg';
 import edit from '../../assets/images/background/home/svg/edit.svg';
 import delite from '../../assets/images/background/home/svg/delete.svg';
@@ -20,6 +23,7 @@ import {
   WaterPortion,
 } from './TodayWaterList.styled';
 import { useState } from 'react';
+import { setCurrentNote } from '../../redux/water/waterSlice';
 
 const testArray = [
   { id: '1', amount: '250ml', time: '14:00 PM' }, // delete
@@ -33,7 +37,7 @@ const TodayWaterList = () => {
   const [waterNotes, setWaterNotes] = useState(testArray); // delete
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  // const dispatch = useDispatch(); open.
+  const dispatch = useDispatch();
   const waterList = useSelector(selectNotes);
   console.log(waterList);
   const closeModal = () => {
@@ -46,8 +50,9 @@ const TodayWaterList = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
-  const openEditModal = () => {
+  const openEditModal = ({ amount, date, id }) => {
     setEditModalOpen(true);
+    dispatch(setCurrentNote({ amount, date, id }));
   };
 
   const deleteWaterNote = id => {
@@ -61,18 +66,20 @@ const TodayWaterList = () => {
         <Title>Today</Title>
         <WaterList>
           {waterNotes.length > 0 && // waterList change waterNotes
-            waterNotes.map(({ id, amount, time }) => {
+            waterNotes.map(({ id, amount, date }) => {
               return (
                 <>
-                  {' '}
                   <WaterListItem key={id}>
                     <WaterPortion>
                       <img src={glass} alt="Icon glass" />
                       <Amount>{amount}</Amount>
-                      <Time>{time}</Time>
+                      <Time>{date}</Time>
                     </WaterPortion>
                     <div>
-                      <EditButton type="button" onClick={openEditModal}>
+                      <EditButton
+                        type="button"
+                        onClick={() => openEditModal({ id, amount, date })}
+                      >
                         <img src={edit} alt="Icon glass" />
                       </EditButton>
                       <DeleteButton
@@ -83,15 +90,12 @@ const TodayWaterList = () => {
                       </DeleteButton>
                     </div>
                   </WaterListItem>
-                  {editModalOpen && (
-                    <EditWaterModal
-                      isOpen={editModalOpen}
-                      onClose={closeEditModal}
-                    />
-                  )}
                 </>
               );
             })}
+          {editModalOpen && (
+            <EditWaterModal isOpen={editModalOpen} onClose={closeEditModal} />
+          )}
         </WaterList>
       </div>
 
