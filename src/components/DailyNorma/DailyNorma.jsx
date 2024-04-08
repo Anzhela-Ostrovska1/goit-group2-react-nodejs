@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DailyNormaContainer, DailyNormaWrapper } from './DailyNorma.styled';
+import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 
 const DailyNorma = () => {
-  const editFormOpen = () => {
-    console.log('Open modal'); //логіка відкриття модалки
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -12,9 +19,12 @@ const DailyNorma = () => {
         <h2>My daily norma:</h2>
         <DailyNormaWrapper>
           <p>1.5 L</p>
-          <button onClick={editFormOpen} type="button">
+          <button type="button" onClick={openModal}>
             Edit
           </button>
+          {isModalOpen && (
+            <DailyNormaModal isOpen={isModalOpen} onClose={closeModal} />
+          )}
         </DailyNormaWrapper>
       </DailyNormaContainer>
     </div>

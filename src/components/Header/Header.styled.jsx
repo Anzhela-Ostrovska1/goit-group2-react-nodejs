@@ -12,14 +12,15 @@ export const MainContainer = styled.div`
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     /* width: 1440px; */
-    padding-right: 120px;
-    padding-left: 120px;
+    padding-right: 112px;
+    padding-left: 112px;
   }
 `;
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 8px;
+  /* padding: 0; */
   align-items: center;
 
   /* margin-bottom: 24px; */

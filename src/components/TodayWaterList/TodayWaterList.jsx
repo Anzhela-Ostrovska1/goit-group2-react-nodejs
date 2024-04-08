@@ -10,6 +10,8 @@ import edit from '../../assets/images/background/home/svg/edit.svg';
 import delite from '../../assets/images/background/home/svg/delete.svg';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import EditWaterModal from '../EditWaterModal/EditWaterModal';
+// import { deleteWaterThunk } from '../../redux/water/waterOperations';
+import { DeleteEntryModal } from '../Home/DeleteEntryModal/DeleteEntryModal';
 
 import {
   AddButton,
@@ -26,20 +28,26 @@ import { useState } from 'react';
 import { setCurrentNote } from '../../redux/water/waterSlice';
 
 const testArray = [
-  { id: '1', amount: '250ml', time: '14:00 PM' }, // delete
+  { id: '1', amount: '250ml', time: '14:00 PM' },
   { id: '2', amount: '250ml', time: '14:00 PM' },
   { id: '3', amount: '250ml', time: '14:00 PM' },
   { id: '4', amount: '250ml', time: '14:00 PM' },
   { id: '5', amount: '250ml', time: '14:00 PM' },
   { id: '6', amount: '250ml', time: '14:00 PM' },
-];
+]; // delete
 const TodayWaterList = () => {
   const [waterNotes, setWaterNotes] = useState(testArray); // delete
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+
   const dispatch = useDispatch();
+
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
   const waterList = useSelector(selectNotes);
+
   console.log(waterList);
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -55,9 +63,17 @@ const TodayWaterList = () => {
     dispatch(setCurrentNote({ amount, date, id }));
   };
 
+  const closeDeleteModal = () => {
+    setDeleteModalOpen(false);
+  };
+
+  // const openDeleteModal = () => {
+  //   setDeleteModalOpen(true);
+  // };
+
   const deleteWaterNote = id => {
     setWaterNotes(prevNotes => prevNotes.filter(note => note.id !== id)); // delete
-    // dispatch(deleteWaterThunk(id)); open.
+    //   dispatch(deleteWaterThunk(id)); // open.
   };
 
   return (
@@ -84,10 +100,17 @@ const TodayWaterList = () => {
                       </EditButton>
                       <DeleteButton
                         type="button"
+                        // onClick={openDeleteModal}
                         onClick={() => deleteWaterNote(id)}
                       >
                         <img src={delite} alt="Icon glass" />
                       </DeleteButton>
+                      {isModalOpen && (
+                        <DeleteEntryModal
+                          isOpen={deleteModalOpen}
+                          onClose={closeDeleteModal}
+                        />
+                      )}
                     </div>
                   </WaterListItem>
                 </>

@@ -104,6 +104,7 @@ export const RightContainer = styled.div`
   box-shadow: 0px 4px 14px 0px #407bff4d;
   border-radius: 10px;
   @media screen and (min-width: 768px) {
+    margin-bottom: 44px;
     padding: 32px 24px;
   }
 

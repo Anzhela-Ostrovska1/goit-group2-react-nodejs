@@ -50,7 +50,7 @@ export const Container = styled.div`
   box-shadow: ${({theme}) => theme.boxShadowforButton.hoverButton};
   border-radius: 10px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${({ theme }) =>theme.breakpoint.tablet}) {
     padding: 32px 24px;
     width: auto;
     list-style-position: inside;

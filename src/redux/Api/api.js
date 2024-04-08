@@ -65,10 +65,8 @@ export const fetchTodayWater = async () => {
   return data;
 };
 
-export const fetchMonthWater = async ({ month, year }) => {
-  console.log('month', typeof month, month);
-  console.log('year', typeof year, year);
-  // console.log('month, year', month, year);
-  const { data } = await axios.get(`/water/month`, { month, year });
+// year, month - string needed
+export const fetchMonthWater = async ({ year, month }) => {
+  const { data } = await axios.post(`/water/month`, { year, month });
   return data;
 };

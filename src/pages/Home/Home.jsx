@@ -1,4 +1,5 @@
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
+import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 import {
@@ -18,6 +19,7 @@ export default function Home() {
         </LeftContainer>
         <RightContainer>
           <TodayWaterList />
+          <MonthStatsTable />
         </RightContainer>
       </HomeContainer>
     </HomeWrapper>
