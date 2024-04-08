@@ -9,3 +9,6 @@ export const selectMonthNote = state => state.water.monthNotes;
 
 // Модалка
 export const selectIsModalOpen = state => state.water.isModalOpen;
+
+// isLoading
+export const selectIsLoading = state => state.water.isLoading;
