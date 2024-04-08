@@ -11,7 +11,6 @@ export default function Welcome() {
   const searchParam = useSearchParams();
   const token = searchParam[0].get('token');
   const navigate = useNavigate();
-console.log(token);
   useEffect(() => {
     if (token) {
       try {
@@ -27,7 +26,6 @@ console.log(token);
 
   return (
     <Wrapper>
-      <SettingsModal />
       <Section>
         <MainComponent />
       </Section>
