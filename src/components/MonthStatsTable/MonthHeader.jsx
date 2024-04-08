@@ -35,7 +35,6 @@ const MonthHeader = ({ changeDirection, month, year }) => {
           {getMonthName(month)}, {year}
         </p>
         <button
-          // className="arrow arrow-right"
           className={`arrow arrow-right ${
             compareWithCurrentDate(month, year) ? 'arrow-right-disabled' : ''
           }`}
