@@ -94,7 +94,7 @@ export const updateWaterRateThunk = createAsyncThunk(
 );
 
 export const updateAvatarThunk = createAsyncThunk(
-  'user/avatar',
+  'auth/avatar',
   async (newPhotoFile, { rejectWithValue }) => {
     try {
       const avatarURL = await updateAvatar(newPhotoFile);
@@ -109,7 +109,7 @@ export const updateAvatarThunk = createAsyncThunk(
 );
 
 export const editUserInfoThunk = createAsyncThunk(
-  'user/edit',
+  'auth/current',
   async (body, { rejectWithValue }) => {
     try {
       const data = await editUserInfo(body);

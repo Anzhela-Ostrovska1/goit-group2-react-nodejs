@@ -4,7 +4,6 @@ import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats';
 
 const MonthCalendar = ({ monthData }) => {
   const [currentDay, setCurrentDay] = useState(null);
-  console.log('monthData', monthData);
 
   const closeDayStats = useCallback(() => {
     setCurrentDay(null);

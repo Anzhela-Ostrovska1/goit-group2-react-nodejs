@@ -45,7 +45,7 @@ export const Time = styled.p`
 export const Title = styled.h2`
   margin-bottom: 16px;
   color: #2f2f2f;
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 24px;
   line-height: 30px;
 

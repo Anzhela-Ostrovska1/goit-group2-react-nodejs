@@ -27,6 +27,7 @@ console.log(token);
 
   return (
     <Wrapper>
+      <SettingsModal />
       <Section>
         <MainComponent />
       </Section>
