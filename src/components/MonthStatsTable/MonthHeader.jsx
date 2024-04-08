@@ -7,16 +7,27 @@ import {
 } from './MonthStatsTable.styled';
 
 const MonthHeader = ({ changeDirection, month, year }) => {
+  function compareWithCurrentDate(month, year) {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+
+    return (
+      Number(year) > currentYear ||
+      (Number(year) === currentYear && Number(month) >= currentMonth)
+    );
+  }
+
   return (
     <DivHeadingWrapper>
       <MonthHeading>Month</MonthHeading>
       <DivMonthSwitcher>
         <button
-          className="arrow"
+          className="arrow arrow-left"
           onClick={() => changeDirection('back')}
           type="button"
         >
-          <svg width="14" height="14">
+          <svg fill="#407BFF" width="14" height="14">
             <use href={`${sprite}#icon-arrow-left`}></use>
           </svg>
         </button>
@@ -24,11 +35,22 @@ const MonthHeader = ({ changeDirection, month, year }) => {
           {getMonthName(month)}, {year}
         </p>
         <button
-          className="arrow"
+          // className="arrow arrow-right"
+          className={`arrow arrow-right ${
+            compareWithCurrentDate(month, year) ? 'arrow-right-disabled' : ''
+          }`}
           onClick={() => changeDirection('forward')}
           type="button"
+          disabled={compareWithCurrentDate(month, year)}
         >
-          <svg width="14" height="14" transform="rotate(180)">
+          <svg
+            fill={`${
+              compareWithCurrentDate(month, year) ? '#9ebbff' : '#407BFF'
+            }`}
+            width="14"
+            height="14"
+            transform="rotate(180)"
+          >
             <use href={`${sprite}#icon-arrow-left`}></use>
           </svg>
         </button>
