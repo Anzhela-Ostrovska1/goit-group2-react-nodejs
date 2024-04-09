@@ -64,7 +64,7 @@ const TodayWaterList = () => {
       <div>
         <Title>Today</Title>
         <WaterList>
-          {waterList.length > 0 && // waterList change waterNotes
+          {waterList.length > 0 &&
             waterList.map(({ _id, amount, date }) => {
               return (
                 <>

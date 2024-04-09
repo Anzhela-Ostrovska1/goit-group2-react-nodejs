@@ -15,9 +15,11 @@ import { fetchTodayWaterThunk } from '../../redux/water/waterOperations';
 
 export default function Home() {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchTodayWaterThunk());
-  // }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchTodayWaterThunk());
+  }, [dispatch]);
+
   return (
     <HomeWrapper>
       <HomeContainer>
