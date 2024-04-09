@@ -11,10 +11,10 @@ import { deleteWaterThunk } from '../../../redux/water/waterOperations';
 
 import { useDispatch } from 'react-redux';
 
-export const DeleteEntryModal = ({ onClose, onShow, waterId }) => {
+export const DeleteEntryModal = ({ onClose, onShow, id }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteWaterThunk(waterId));
+    dispatch(deleteWaterThunk(id));
     onClose();
   };
 
@@ -25,7 +25,7 @@ export const DeleteEntryModal = ({ onClose, onShow, waterId }) => {
         <ButtonContainer>
           <ButtonStyle onClick={handleDelete}>Delete</ButtonStyle>
 
-          <ButtonStyle onClick={onClose}>Cancel</ButtonStyle>
+          <ButtonStyle onClick={onClose}  style={{color:'#407BFF'}}>Cancel</ButtonStyle>
         </ButtonContainer>
       </ModalContainer>
     </BaseModalWindow>

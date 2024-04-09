@@ -27,7 +27,7 @@ export const UserLogoutModal = ({ onClose, onShow }) => {
         <ModalTitle>Do you really want to leave?</ModalTitle>
         <ButtonContainer>
           <ButtonStyle onClick={handleLogout}>Log out</ButtonStyle>
-          <ButtonStyle onClick={onClose}>Cancel</ButtonStyle>
+          <ButtonStyle onClick={onClose} style={{color:'#407BFF'}}>Cancel</ButtonStyle>
         </ButtonContainer>
       </ModalContainer>
     </BaseModalWindow>
