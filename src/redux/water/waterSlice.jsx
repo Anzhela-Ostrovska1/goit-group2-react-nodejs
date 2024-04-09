@@ -23,7 +23,6 @@ const waterSlice = createSlice({
   initialState,
   reducers: {
     setCurrentNote: (state, { payload }) => {
-      console.log(123);
       state.currentNote = payload;
     },
   },
@@ -46,7 +45,7 @@ const waterSlice = createSlice({
 
       .addCase(editWaterThunk.fulfilled, (state, { payload }) => {
         const index = state.notes.findIndex(item => {
-          return item.id === payload.id;
+          return item._id === payload._id;
         });
         if (index === -1) return;
         state.notes.splice(index, 1, payload);
@@ -69,7 +68,7 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.notes = state.notes.filter(({ _id }) => _id !== payload.id);
+        state.notes = state.notes.filter(({ _id }) => _id !== payload._id);
       })
       .addCase(deleteWaterThunk.rejected, (state, { payload }) => {
         state.isLoading = false;

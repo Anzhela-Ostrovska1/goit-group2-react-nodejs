@@ -46,9 +46,9 @@ const TodayWaterList = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
-  const openEditModal = ({ amount, date, id }) => {
+  const openEditModal = ({ amount, date, _id }) => {
     setEditModalOpen(true);
-    dispatch(setCurrentNote({ amount, date, id }));
+    dispatch(setCurrentNote({ amount, date, _id }));
   };
 
   const closeDeleteModal = () => {

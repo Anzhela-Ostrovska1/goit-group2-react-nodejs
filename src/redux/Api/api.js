@@ -55,8 +55,8 @@ export const addWater = async ({ amount, date }) => {
   return data;
 };
 
-export const editWater = async ({ id, amount, date }) => {
-  const { data } = await axios.put(`/water/${id}`, { amount, date });
+export const editWater = async ({ _id, amount, date }) => {
+  const { data } = await axios.put(`/water/${_id}`, { amount, date });
   return data;
 };
 
