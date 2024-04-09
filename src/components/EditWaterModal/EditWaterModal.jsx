@@ -25,9 +25,10 @@ import {
 import { editWaterThunk } from '../../redux/water/waterOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentNote } from '../../redux/water/waterSelectors';
+import { useCallback } from 'react';
 
 Modal.setAppElement('#root');
-export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
+export default function EditWaterModal({ onClose }) {
   const currentNote = useSelector(selectCurrentNote);
 
   const [amount, setAmount] = useState(currentNote.amount);
@@ -51,12 +52,13 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
 
     setTime(currentTime);
   };
-  const handleAddWater = () => {
-    dispatch(editWaterThunk({ amount, date: Date(time) }));
-  };
-  const handleClose = () => {
+  const handleEditWater = () => {
+    dispatch(
+      editWaterThunk({ _id: currentNote._id, amount, date: Date(time) }),
+    );
     onClose();
   };
+
   const incrementAmount = () => {
     setAmount(amount + 50);
     setCurrentAmount(amount + 50);
@@ -80,7 +82,7 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
     } else {
       let numericValue = parseInt(value, 10);
       numericValue = isNaN(numericValue) || numericValue < 0 ? 0 : numericValue;
-      setCurrentAmount(numericValue.toString());
+      setCurrentAmount(numericValue);
     }
   };
 
@@ -88,14 +90,16 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
     if (e.target.closest('#selectTimeWrapper')) return;
 
     setIsEditTime(false);
-    if (e.target === e.currentTarget) handleClose();
+    if (e.target === e.currentTarget) onClose();
   };
 
-  const handleKeyDown = event => {
-    if (event.key === 'Escape') {
-      handleClose();
-    }
-  };
+  const handleKeyDown = useCallback(() => {
+    event => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+  }, [onClose]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -103,7 +107,7 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   const getFormattedDate = dateString => {
     const date = new Date(dateString);
@@ -115,7 +119,7 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
   return ReactDOM.createPortal(
     <Wrapper onClick={handleOffIsEditTime}>
       <Container>
-        <ButtonClose onClick={handleClose}>
+        <ButtonClose onClick={onClose}>
           <svg width="24" height="24">
             <use href={`${sprite}#icon-close`}></use>
           </svg>
@@ -169,7 +173,7 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
         ></AmountInput>
         <BottomBox>
           <AccentText>{amount}ml</AccentText>
-          <ButtonSubmit onClick={handleAddWater} type="button">
+          <ButtonSubmit onClick={handleEditWater} type="button">
             Save
           </ButtonSubmit>
         </BottomBox>
