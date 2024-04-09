@@ -31,30 +31,30 @@ export const SignupContainer = styled.div`
     gap: 0;
     flex-direction: row-reverse;
     align-items: center;
-     width: 1440px;
-     height: 582px;
+    width: 1440px;
+    height: 582px;
     padding-right: 120px;
     padding-left: 120px;
   }
 `;
 
 export const BottleBg = styled.div`
-  @media screen and (max-width: ${({ theme }) => `calc(${theme.breakpoint.tablet} - 1px)` }) {
+  @media screen and (max-width: ${({ theme }) => `calc(${theme.breakpoint.tablet} - 1px)`}) {
     order: 2;
     background-image: url(${bottleMob1x});
     background-size: contain;
-   background-repeat: no-repeat;
-   width: 280px;
-   height: 210px;
-   background-position: center;}
-  
+    background-repeat: no-repeat;
+    width: 280px;
+    height: 210px;
+    background-position: center;
+  }
+
   @media screen and (max-width: ${({ theme }) => theme.breakpoint.tablet}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
     background-image: url(${bottleMob2x});
   }
-  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) { 
-     position: relative;
-    }
-
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    position: relative;
+  }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     order: 1;
@@ -65,9 +65,8 @@ export const BottleBg = styled.div`
     /* flex-grow: 1; */
     /* background-size: cover; 
   background-position: center center; */
-  top: 50px;
-  left: -130px;
-
+    top: 50px;
+    left: -130px;
 
     /* position: absolute;
    
@@ -136,6 +135,10 @@ export const StyledLabel = styled.label`
   font-weight: 400;
   line-height: 24px;
   color: ${({ theme }) => theme.color.primaryBlack};
+  .input-with-error {
+    border-color: ${({ theme }) => theme.color.secondaryRed};
+    color: ${({ theme }) => theme.color.secondaryRed};
+  }
 `;
 export const Field = styled(FormikField)`
   display: flex;
@@ -155,14 +158,11 @@ export const Field = styled(FormikField)`
   &:focus-within {
     outline: none;
   }
-  
-  &:invalid {
-    border-color: ${({ theme }) => theme.color.secondaryRed}; 
-    color: ${({ theme }) => theme.color.secondaryRed}; 
-  }
 `;
 
 export const FormButton = styled.button`
+  display: flex;
+  gap: 15px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -191,9 +191,9 @@ export const FormButton = styled.button`
   }
 `;
 export const ErrorMessage = styled(FormikError)`
- font-size: 14px;
- line-height: 18px;
- color: ${({ theme }) => theme.color.secondaryRed};
+  font-size: 14px;
+  line-height: 18px;
+  color: ${({ theme }) => theme.color.secondaryRed};
 `;
 
 export const EyeIcon = styled.svg`

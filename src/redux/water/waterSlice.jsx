@@ -69,7 +69,7 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.notes = state.notes.filter(({ id }) => id !== payload.id);
+        state.notes = state.notes.filter(({ _id }) => _id !== payload.id);
       })
       .addCase(deleteWaterThunk.rejected, (state, { payload }) => {
         state.isLoading = false;

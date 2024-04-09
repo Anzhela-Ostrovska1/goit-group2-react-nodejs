@@ -1,16 +1,12 @@
-import React from 'react';
 import { FaPlus } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectCurrentNote,
-  selectNotes,
-} from '../../redux/water/waterSelectors';
+import { selectNotes } from '../../redux/water/waterSelectors';
 import glass from '../../assets/images/background/home/svg/glass.svg';
 import edit from '../../assets/images/background/home/svg/edit.svg';
 import delite from '../../assets/images/background/home/svg/delete.svg';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import EditWaterModal from '../EditWaterModal/EditWaterModal';
-// import { deleteWaterThunk } from '../../redux/water/waterOperations';
+
 import { DeleteEntryModal } from '../Home/DeleteEntryModal/DeleteEntryModal';
 
 import {
@@ -26,17 +22,9 @@ import {
 } from './TodayWaterList.styled';
 import { useState } from 'react';
 import { setCurrentNote } from '../../redux/water/waterSlice';
+import { formatDate } from '../../helpers/formatDate';
 
-const testArray = [
-  { id: '1', amount: '250ml', time: '14:00 PM' },
-  { id: '2', amount: '250ml', time: '14:00 PM' },
-  { id: '3', amount: '250ml', time: '14:00 PM' },
-  { id: '4', amount: '250ml', time: '14:00 PM' },
-  { id: '5', amount: '250ml', time: '14:00 PM' },
-  { id: '6', amount: '250ml', time: '14:00 PM' },
-]; // delete
 const TodayWaterList = () => {
-  const [waterNotes, setWaterNotes] = useState(testArray); // delete
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
@@ -67,13 +55,8 @@ const TodayWaterList = () => {
     setDeleteModalOpen(false);
   };
 
-  // const openDeleteModal = () => {
-  //   setDeleteModalOpen(true);
-  // };
-
-  const deleteWaterNote = id => {
-    setWaterNotes(prevNotes => prevNotes.filter(note => note.id !== id)); // delete
-    //   dispatch(deleteWaterThunk(id)); // open.
+  const openDeleteModal = () => {
+    setDeleteModalOpen(true);
   };
 
   return (
@@ -81,34 +64,37 @@ const TodayWaterList = () => {
       <div>
         <Title>Today</Title>
         <WaterList>
-          {waterNotes.length > 0 && // waterList change waterNotes
-            waterNotes.map(({ id, amount, date }) => {
+          {waterList.length > 0 && // waterList change waterNotes
+            waterList.map(({ _id, amount, date }) => {
               return (
                 <>
-                  <WaterListItem key={id}>
+                  <WaterListItem key={_id}>
                     <WaterPortion>
                       <img src={glass} alt="Icon glass" />
-                      <Amount>{amount}</Amount>
-                      <Time>{date}</Time>
+                      <Amount>{amount} ml</Amount>
+                      <Time>{formatDate(date)}</Time>
                     </WaterPortion>
                     <div>
                       <EditButton
                         type="button"
-                        onClick={() => openEditModal({ id, amount, date })}
+                        onClick={() => openEditModal({ _id, amount, date })}
                       >
                         <img src={edit} alt="Icon glass" />
                       </EditButton>
-                      <DeleteButton
-                        type="button"
-                        // onClick={openDeleteModal}
-                        onClick={() => deleteWaterNote(id)}
-                      >
+                      <DeleteButton type="button" onClick={openDeleteModal}>
                         <img src={delite} alt="Icon glass" />
                       </DeleteButton>
-                      {isModalOpen && (
+                      {editModalOpen && (
+                        <EditWaterModal
+                          isOpen={editModalOpen}
+                          onClose={closeEditModal} // потрібно доопрацювати editModal і додати props
+                        />
+                      )}
+                      {deleteModalOpen && (
                         <DeleteEntryModal
-                          isOpen={deleteModalOpen}
+                          onShow={deleteModalOpen}
                           onClose={closeDeleteModal}
+                          id={_id}
                         />
                       )}
                     </div>
