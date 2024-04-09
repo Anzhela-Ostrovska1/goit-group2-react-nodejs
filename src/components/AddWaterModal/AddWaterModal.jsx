@@ -68,8 +68,14 @@ export default function AddWaterModal({ isOpen, onClose, onAddWater }) {
     setAmount(currentAmount);
   };
   const handleChange = e => {
-    const value = parseInt(e.target.value > 0 ? e.target.value : 0, 10);
-    setCurrentAmount(value);
+    const { value } = e.target;
+    if (value === '') {
+      setCurrentAmount('');
+    } else {
+      let numericValue = parseInt(value, 10);
+      numericValue = isNaN(numericValue) || numericValue < 0 ? 0 : numericValue;
+      setCurrentAmount(numericValue.toString());
+    }
   };
 
   const handleOffIsEditTime = e => {

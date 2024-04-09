@@ -23,6 +23,7 @@ const waterSlice = createSlice({
   initialState,
   reducers: {
     setCurrentNote: (state, { payload }) => {
+      console.log(123);
       state.currentNote = payload;
     },
   },
@@ -117,3 +118,4 @@ const waterSlice = createSlice({
 });
 
 export const waterReducer = waterSlice.reducer;
+export const { setCurrentNote } = waterSlice.actions;

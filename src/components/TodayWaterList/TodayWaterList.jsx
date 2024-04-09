@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaPlus } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNotes } from '../../redux/water/waterSelectors';
@@ -22,11 +21,15 @@ import {
   WaterPortion,
 } from './TodayWaterList.styled';
 import { useState } from 'react';
+import { setCurrentNote } from '../../redux/water/waterSlice';
 import { formatDate } from '../../helpers/formatDate';
 
 const TodayWaterList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const waterList = useSelector(selectNotes);
@@ -43,8 +46,9 @@ const TodayWaterList = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
-  const openEditModal = () => {
+  const openEditModal = ({ amount, date, id }) => {
     setEditModalOpen(true);
+    dispatch(setCurrentNote({ amount, date, id }));
   };
 
   const closeDeleteModal = () => {
@@ -62,8 +66,6 @@ const TodayWaterList = () => {
         <WaterList>
           {waterList.length > 0 && // waterList change waterNotes
             waterList.map(({ _id, amount, date }) => {
-              console.log(_id);
-
               return (
                 <>
                   <WaterListItem key={_id}>
@@ -73,7 +75,10 @@ const TodayWaterList = () => {
                       <Time>{formatDate(date)}</Time>
                     </WaterPortion>
                     <div>
-                      <EditButton type="button" onClick={openEditModal}>
+                      <EditButton
+                        type="button"
+                        onClick={() => openEditModal({ _id, amount, date })}
+                      >
                         <img src={edit} alt="Icon glass" />
                       </EditButton>
                       <DeleteButton type="button" onClick={openDeleteModal}>
@@ -97,6 +102,9 @@ const TodayWaterList = () => {
                 </>
               );
             })}
+          {editModalOpen && (
+            <EditWaterModal isOpen={editModalOpen} onClose={closeEditModal} />
+          )}
         </WaterList>
       </div>
 

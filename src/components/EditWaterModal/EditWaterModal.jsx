@@ -28,10 +28,7 @@ import { selectCurrentNote } from '../../redux/water/waterSelectors';
 
 Modal.setAppElement('#root');
 export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
-  const currentNote = useSelector(selectCurrentNote) || {
-    amount: 250,
-    date: new Date(),
-  };
+  const currentNote = useSelector(selectCurrentNote);
 
   const [amount, setAmount] = useState(currentNote.amount);
   const [isEditTime, setIsEditTime] = useState(false);
@@ -77,8 +74,14 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
     setAmount(currentAmount);
   };
   const handleChange = e => {
-    const value = parseInt(e.target.value > 0 ? e.target.value : 0, 10);
-    setCurrentAmount(value);
+    const { value } = e.target;
+    if (value === '') {
+      setCurrentAmount('');
+    } else {
+      let numericValue = parseInt(value, 10);
+      numericValue = isNaN(numericValue) || numericValue < 0 ? 0 : numericValue;
+      setCurrentAmount(numericValue.toString());
+    }
   };
 
   const handleOffIsEditTime = e => {
@@ -125,7 +128,7 @@ export default function EditWaterModal({ isOpen, onClose, onAddWater }) {
           </svg>
           <AccentRegularText>{currentNote.amount}ml</AccentRegularText>
           <NormalTextWithoutMargin>
-            {getFormattedDate(currentNote.time)}
+            {getFormattedDate(currentNote.date)}
           </NormalTextWithoutMargin>
         </BoxPrevInfo>
         <BoldText>Correct entered data:</BoldText>
