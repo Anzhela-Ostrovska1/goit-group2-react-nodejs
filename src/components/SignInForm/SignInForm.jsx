@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-// import { useSelector } from 'react-redux';
-// import { selectIsLoading } from '../../redux/Auth/AuthSelectors.jsx';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectIsLoading } from '../../redux/Auth/AuthSelectors';
 import {
   BottleBg,
   FormContainer,
@@ -15,18 +15,19 @@ import {
   FormButton,
   EyeIcon,
 } from '../SignUpForm/SignUpForm.styled';
-
-import { useDispatch } from 'react-redux';
 import { logInThunk } from '../../redux/Auth/AuthOperations.jsx';
 
 import sprite from 'src/assets/images/sprite/sprite.svg';
 import { useState } from 'react';
-// import { ButtonLoader } from '../common/ButtonLoader/ButtonLoader.jsx';
+import { ButtonLoader } from '../common/ButtonLoader/ButtonLoader.jsx';
 
 const validationSchema = Yup.object({
   email: Yup.string('Enter your email')
     .email('Enter a valid email')
-    .matches(/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/, 'Email is not valid')
+    .matches(
+      /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/,
+      'Email is not valid',
+    )
     .required('Email is required'),
   password: Yup.string()
     .min(6, 'Your password is too short.')
@@ -35,7 +36,8 @@ const validationSchema = Yup.object({
 });
 export const SigninForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  // const { isLoading } = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
+  console.log(isLoading);
   const dispatch = useDispatch();
 
   const handleTogglePassword = () => {
@@ -95,7 +97,7 @@ export const SigninForm = () => {
                 className={!isValid ? 'button-disabled' : null}
                 type="submit"
               >
-                Sign In
+                Sign In {isLoading && <ButtonLoader />}
               </FormButton>
             </Form>
           )}

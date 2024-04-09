@@ -158,11 +158,6 @@ export const Field = styled(FormikField)`
   &:focus-within {
     outline: none;
   }
-
-  /* &:invalid {
-    border-color: ${({ theme }) => theme.color.secondaryRed};
-    color: ${({ theme }) => theme.color.secondaryRed};
-  } */
 `;
 
 export const FormButton = styled.button`
