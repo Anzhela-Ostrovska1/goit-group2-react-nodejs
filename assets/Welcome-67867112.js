@@ -1,4 +1,4 @@
-import{n as t,j as n,u as d,s,a as c,b as l,r as g,c as x,d as m}from"./index-35d78900.js";import{b as h}from"./bg_element_des@1x-1805b66c.js";import{b}from"./bg_element_des@2x-cb13cb99.js";const u=t.h3`
+import{n as t,j as n,u as d,s,a as c,b as l,r as g,c as x,d as m}from"./index-7fa02c59.js";import{b as h}from"./bg_element_des@1x-1805b66c.js";import{b}from"./bg_element_des@2x-cb13cb99.js";const u=t.h3`
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 12px;
@@ -174,7 +174,8 @@ padding: 0;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
-  min-height: 100vh;
+  min-height: calc(-64px + 100vh);
+
   background-image: url(${P});
 
   @media (min-device-pixel-ratio: 2),
