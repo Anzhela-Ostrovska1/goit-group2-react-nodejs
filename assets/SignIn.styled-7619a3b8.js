@@ -1,4 +1,4 @@
-import{n as i,D as n,E as t,G as A,N as a,j as o,T as r}from"./index-79e77ff0.js";import{b as d}from"./bg_element_des@1x-1805b66c.js";import{b as s}from"./bg_element_des@2x-cb13cb99.js";const p="/goit-group2-react-nodejs/assets/bg_bottle_signin_mob@1x-fad615a5.png",l="/goit-group2-react-nodejs/assets/bg_bottle_signin_mob@2x-ada1b009.png",c="/goit-group2-react-nodejs/assets/bg_signin_des@1x-7ec0cc57.png",g="/goit-group2-react-nodejs/assets/bg_signin_des@2x-f16bac49.png",k=i.div`
+import{n as i,E as n,G as t,H as A,N as a,j as o,T as r}from"./index-2339d0d0.js";import{b as d}from"./bg_element_des@1x-1805b66c.js";import{b as s}from"./bg_element_des@2x-cb13cb99.js";const p="/goit-group2-react-nodejs/assets/bg_bottle_signin_mob@1x-fad615a5.png",l="/goit-group2-react-nodejs/assets/bg_bottle_signin_mob@2x-ada1b009.png",c="/goit-group2-react-nodejs/assets/bg_signin_des@1x-7ec0cc57.png",g="/goit-group2-react-nodejs/assets/bg_signin_des@2x-f16bac49.png",k=i.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -135,7 +135,7 @@ import{n as i,D as n,E as t,G as A,N as a,j as o,T as r}from"./index-79e77ff0.js
   &:focus-within {
     outline: none;
   }
-`,D=i.button`
+`,j=i.button`
   display: flex;
   gap: 15px;
   width: 100%;
@@ -164,7 +164,7 @@ import{n as i,D as n,E as t,G as A,N as a,j as o,T as r}from"./index-79e77ff0.js
     line-height: 24px;
     padding: 10px 30px;
   }
-`,j=i(A)`
+`,D=i(A)`
   font-size: 14px;
   line-height: 18px;
   color: ${({theme:e})=>e.color.secondaryRed};
@@ -216,4 +216,4 @@ import{n as i,D as n,E as t,G as A,N as a,j as o,T as r}from"./index-79e77ff0.js
   @media screen and (min-width: ${({theme:e})=>e.breakpoint.desktop}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
     background-image: url(${s});
   }
-`;export{w as B,j as E,y as F,k as S,B as a,G as b,N as c,z as d,E as e,D as f,V as g,R as h,T as i};
+`;export{w as B,D as E,y as F,k as S,B as a,G as b,N as c,z as d,E as e,j as f,V as g,R as h,T as i};
