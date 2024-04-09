@@ -94,7 +94,7 @@ const waterSlice = createSlice({
       })
       .addCase(fetchTodayWaterThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.notes = payload;
+        state.notes = payload.dailyWaterList;
       })
       .addCase(fetchTodayWaterThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
