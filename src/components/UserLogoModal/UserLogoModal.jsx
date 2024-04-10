@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import sprite from '../../assets/images/sprite/sprite.svg';
 import {
   PopBtn,
@@ -9,11 +10,13 @@ import {
 } from './UserLogoModal.styled';
 
 import { UserLogoutModal } from '../Home/LogOutModal/LogOutModal';
-import { SettingsModal } from '../SettingsModal/SettingsModal';
+import { SettingsModal } from '../SettingsModal/SettingsModal.jsx';
 
 export const UserLogoModal = () => {
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+
+  useEffect(() => {}, [isSettingsModalOpen]);
 
   const handleLogOutButtonClick = () => {
     setIsLogOutModalOpen(true);
@@ -21,6 +24,10 @@ export const UserLogoModal = () => {
 
   const handleSettingsButtonClick = () => {
     setIsSettingsModalOpen(true);
+  };
+
+  const handleCloseSettingsModal = () => {
+    setIsSettingsModalOpen(false);
   };
 
   return (
@@ -44,7 +51,9 @@ export const UserLogoModal = () => {
         </PopItem>
       </PopList>
       {isLogOutModalOpen && <UserLogoutModal />}
-      {isSettingsModalOpen && <SettingsModal />}
+      {isSettingsModalOpen && (
+        <SettingsModal onClose={handleCloseSettingsModal} />
+      )}
     </Popover>
   );
 };

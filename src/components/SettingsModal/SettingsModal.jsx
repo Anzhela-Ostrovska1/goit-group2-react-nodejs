@@ -1,5 +1,3 @@
-// import { BaseModalWindow, ContentLoader } from 'components';
-// no such component as ContentLoader
 import { BaseModalWindow } from '../common/BaseModalWindow/BaseModalWindow.jsx';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
@@ -13,10 +11,9 @@ import {
 } from '../../redux/Auth/AuthOperations.jsx';
 import { selectUser } from '../../redux/Auth/AuthSelectors.jsx';
 // import { selectIsLoading } from '../../../redux/root/rootSelectors';
-// import { UserDeleteModal } from '../UserDeleteModal/UserDeleteModal';
+
 import {
   Avatar,
-  // DeleteBtn,
   DesktopFormWrap,
   DesktopGenderWrap,
   DesktopPasswordWrap,
@@ -81,12 +78,7 @@ export const SettingsModal = ({ onClose, onShow }) => {
   const { avatarURL, email, name, gender } = useSelector(selectUser);
   // const { isLoading } = useSelector(selectIsLoading);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-  // const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   // const [isAvatarLoading, setIsAvatarLoading] = useState(false);
-
-  // const toggleDeleteModal = () => {
-  //   setDeleteModalOpen(previsDeleteModalOpen => !previsDeleteModalOpen);
-  // };
 
   const initialValues = {
     gender: gender || '',
@@ -112,18 +104,21 @@ export const SettingsModal = ({ onClose, onShow }) => {
       newPass,
     };
 
-    const dataSend = {};
-
-    Object.entries(formData).forEach(([key, value]) => {
+    const dataSend = Object.entries(formData).reduce((acc, [key, value]) => {
       if (value) {
-        dataSend[key] = value;
+        acc[key] = value;
       }
-    });
+      return acc;
+    }, {});
+
+    console.log('Sending data:', dataSend);
 
     dispatch(editUserInfoThunk(dataSend)).then(data => {
       if (!data.error) {
         onClose();
         actions.resetForm();
+      } else {
+        console.log('Problem with updating user info');
       }
     });
   };
@@ -132,13 +127,8 @@ export const SettingsModal = ({ onClose, onShow }) => {
     setIsPasswordShown(previsPasswordShown => !previsPasswordShown);
   };
 
- 
- 
- 
- 
- 
- 
   const handleAvatarDownload = e => {
+    console.log(e);
     let formData = new FormData();
     formData.append('avatar', e.target.files[0]);
 
@@ -154,26 +144,25 @@ export const SettingsModal = ({ onClose, onShow }) => {
 
   return (
     <>
-      <BaseModalWindow onClose={onClose} onShow={onShow} title="Settings">
+      <BaseModalWindow onClose={onClose} onShow={true} title="Settings">
         <ModalWrap>
-          {
-            <Formik
-              initialValues={initialValues}
-              validationSchema={settingsFormValidationSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ values, errors, touched }) => (
-                <Form>
-                  <FormField>
-                    <FormText>Your photo</FormText>
-                    <DownloadWrap>
-                      <Avatar
-                        src={avatarURL ? avatarURL : defaultAvatar}
-                        alt="user avatar"
-                        width="80px"
-                        height="80px"
-                      />
-                      {/* {isAvatarLoading ? (
+          <Formik
+            initialValues={initialValues}
+            validationSchema={settingsFormValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values, errors, touched, setFieldValue }) => (
+              <Form>
+                <FormField>
+                  <FormText>Your photo</FormText>
+                  <DownloadWrap>
+                    <Avatar
+                      src={avatarURL ? avatarURL : defaultAvatar}
+                      alt="user avatar"
+                      width="80px"
+                      height="80px"
+                    />
+                    {/* {isAvatarLoading ? (
                         <ContentLoader
                           width={'80px'}
                           height={'80px'}
@@ -187,202 +176,200 @@ export const SettingsModal = ({ onClose, onShow }) => {
                           height="80px"
                         />
                       )} */}
-                      <DownloadBtn>
-                        <Field
-                          type="file"
-                          name="avatar"
-                          hidden
-                          accept="image/png, image/jpeg"
-                          onChange={handleAvatarDownload}
-                        />
-                        <IconDownload>
-                          <use href={`${sprite}#icon-arrow-up`}></use>
-                        </IconDownload>
-                        <DownloadBtnText>Upload a photo</DownloadBtnText>
-                      </DownloadBtn>
-                    </DownloadWrap>
-                  </FormField>
-                  <DesktopFormWrap>
-                    <DesktopGenderWrap>
-                      <GenderFormField>
-                        <GenderText>Your gender identity</GenderText>
-                        <RadioBtnWrap>
-                          <RadioBtnLabel>
-                            <RadioBtn
-                              type="radio"
-                              name="gender"
-                              value="female"
-                              checked={values.gender === 'female'}
-                            />
-                            <RadioBtnText>Girl</RadioBtnText>
-                          </RadioBtnLabel>
-                          <RadioBtnLabel>
-                            <RadioBtn
-                              type="radio"
-                              name="gender"
-                              value="male"
-                              checked={values.gender === 'male'}
-                            />
-                            <RadioBtnText>Man</RadioBtnText>
-                          </RadioBtnLabel>
-                        </RadioBtnWrap>
-                      </GenderFormField>
-                      <FormField>
-                        <StyledLabel htmlFor="username">Your name</StyledLabel>
+                    <DownloadBtn>
+                      <Field
+                        type="file"
+                        name="avatar"
+                        hidden
+                        accept="image/png, image/jpeg"
+                        onChange={handleAvatarDownload}
+                      />
+                      <IconDownload>
+                        <use href={`${sprite}#icon-arrow-up`}></use>
+                      </IconDownload>
+                      <DownloadBtnText>Upload a photo</DownloadBtnText>
+                    </DownloadBtn>
+                  </DownloadWrap>
+                </FormField>
+                <DesktopFormWrap>
+                  <DesktopGenderWrap>
+                    <GenderFormField>
+                      <GenderText>Your gender identity</GenderText>
+                      <RadioBtnWrap>
+                        <RadioBtnLabel>
+                          <RadioBtn
+                            type="radio"
+                            name="gender"
+                            value="Woman"
+                            checked={values.gender === 'Woman'}
+                            onChange={() => setFieldValue('gender', 'Woman')}
+                          />
+                          <RadioBtnText>Woman</RadioBtnText>
+                        </RadioBtnLabel>
+                        <RadioBtnLabel>
+                          <RadioBtn
+                            type="radio"
+                            name="gender"
+                            value="Man"
+                            checked={values.gender === 'Man'}
+                            onChange={() => setFieldValue('gender', 'Man')}
+                          />
+                          <RadioBtnText>Man</RadioBtnText>
+                        </RadioBtnLabel>
+                      </RadioBtnWrap>
+                    </GenderFormField>
+                    <FormField>
+                      <StyledLabel htmlFor="username">Your name</StyledLabel>
+                      <Input
+                        type="text"
+                        id="username"
+                        name="name"
+                        className={
+                          errors.name && touched.name ? 'error-input' : null
+                        }
+                        placeholder={values.name}
+                      />
+                      <StyledErrorMessage component="p" name="name" />
+                    </FormField>
+                    <div>
+                      <StyledLabel htmlFor="email">E-mail</StyledLabel>
+                      <Input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className={
+                          errors.email && touched.email ? 'error-input' : null
+                        }
+                        placeholder={values.email}
+                      />
+                      <StyledErrorMessage component="p" name="email" />
+                    </div>
+                  </DesktopGenderWrap>
+                  <DesktopPasswordWrap>
+                    <PasswordText>Password</PasswordText>
+                    <PasswordFormField>
+                      <PasswordLabel htmlFor="currentPassword">
+                        Outdated password:
+                      </PasswordLabel>
+                      <PasswordInputWrap>
                         <Input
-                          type="text"
-                          id="username"
-                          name="name"
+                          type={isPasswordShown ? 'text' : 'password'}
+                          id="currentPassword"
+                          name="currentPass"
                           className={
-                            errors.name && touched.name ? 'error-input' : null
+                            errors.currentPass && touched.currentPass
+                              ? 'error-input'
+                              : null
                           }
-                          placeholder={values.name}
+                          placeholder="Password"
+                          autoComplete="current-password"
                         />
-                        <StyledErrorMessage component="p" name="name" />
-                      </FormField>
-                      <div>
-                        <StyledLabel htmlFor="email">E-mail</StyledLabel>
+                        <IconBtn
+                          type="button"
+                          onClick={handlePasswordVisibility}
+                        >
+                          {isPasswordShown ? (
+                            <PasswordIcon>
+                              <use href={`${sprite}#icon-to-open`}></use>
+                            </PasswordIcon>
+                          ) : (
+                            <PasswordIcon>
+                              <use href={`${sprite}#icon-to-hide`}></use>
+                            </PasswordIcon>
+                          )}
+                        </IconBtn>
+                      </PasswordInputWrap>
+                      <StyledErrorMessage component="p" name="currentPass" />
+                    </PasswordFormField>
+                    <PasswordFormField>
+                      <PasswordLabel htmlFor="password">
+                        New Password:
+                      </PasswordLabel>
+                      <PasswordInputWrap>
                         <Input
-                          type="email"
-                          id="email"
-                          name="email"
+                          type={isPasswordShown ? 'text' : 'password'}
+                          id="password"
+                          name="newPass"
                           className={
-                            errors.email && touched.email ? 'error-input' : null
+                            (errors.newPass && touched.newPass) ||
+                            (values.currentPass && !values.newPass)
+                              ? 'error-input'
+                              : null
                           }
-                          placeholder={values.email}
+                          placeholder="Password"
+                          autoComplete="new-password"
                         />
-                        <StyledErrorMessage component="p" name="email" />
-                      </div>
-                    </DesktopGenderWrap>
-                    <DesktopPasswordWrap>
-                      <PasswordText>Password</PasswordText>
-                      <PasswordFormField>
-                        <PasswordLabel htmlFor="currentPassword">
-                          Outdated password:
-                        </PasswordLabel>
-                        <PasswordInputWrap>
-                          <Input
-                            type={isPasswordShown ? 'text' : 'password'}
-                            id="currentPassword"
-                            name="currentPass"
-                            className={
-                              errors.currentPass && touched.currentPass
-                                ? 'error-input'
-                                : null
-                            }
-                            placeholder="Password"
-                          />
-                          <IconBtn
-                            type="button"
-                            onClick={handlePasswordVisibility}
-                          >
-                            {isPasswordShown ? (
-                              <PasswordIcon>
-                                <use href={`${sprite}#icon-to-open`}></use>
-                              </PasswordIcon>
-                            ) : (
-                              <PasswordIcon>
-                                <use href={`${sprite}#icon-to-hide`}></use>
-                              </PasswordIcon>
-                            )}
-                          </IconBtn>
-                        </PasswordInputWrap>
-                        <StyledErrorMessage component="p" name="currentPass" />
-                      </PasswordFormField>
-                      <PasswordFormField>
-                        <PasswordLabel htmlFor="password">
-                          New Password:
-                        </PasswordLabel>
-                        <PasswordInputWrap>
-                          <Input
-                            type={isPasswordShown ? 'text' : 'password'}
-                            id="password"
-                            name="newPass"
-                            className={
-                              (errors.newPass && touched.newPass) ||
-                              (values.currentPass && !values.newPass)
-                                ? 'error-input'
-                                : null
-                            }
-                            placeholder="Password"
-                          />
-                          <IconBtn
-                            type="button"
-                            onClick={handlePasswordVisibility}
-                          >
-                            {isPasswordShown ? (
-                              <PasswordIcon>
-                                <use href={`${sprite}#icon-to-open`}></use>
-                              </PasswordIcon>
-                            ) : (
-                              <PasswordIcon>
-                                <use href={`${sprite}#icon-to-hide`}></use>
-                              </PasswordIcon>
-                            )}
-                          </IconBtn>
-                        </PasswordInputWrap>
-                        {values.currentPass && !values.newPass && (
-                          <StyledErrorText>
-                            Please, enter new password
-                          </StyledErrorText>
-                        )}
-                        <StyledErrorMessage component="p" name="newPass" />
-                      </PasswordFormField>
-                      <LastPasswordFormField>
-                        <PasswordLabel htmlFor="repNewPass">
-                          Repeat new password:
-                        </PasswordLabel>
-                        <PasswordInputWrap>
-                          <Input
-                            type={isPasswordShown ? 'text' : 'password'}
-                            id="repNewPass"
-                            name="repNewPass"
-                            className={
-                              values.newPass !== values.repNewPass
-                                ? 'error-input'
-                                : null
-                            }
-                            placeholder="Password"
-                          />
-                          <IconBtn
-                            type="button"
-                            onClick={handlePasswordVisibility}
-                          >
-                            {isPasswordShown ? (
-                              <PasswordIcon>
-                                <use href={`${sprite}#icon-to-open`}></use>
-                              </PasswordIcon>
-                            ) : (
-                              <PasswordIcon>
-                                <use href={`${sprite}#icon-to-hide`}></use>
-                              </PasswordIcon>
-                            )}
-                          </IconBtn>
-                        </PasswordInputWrap>
-                        <StyledErrorMessage component="p" name="repNewPass" />
-                      </LastPasswordFormField>
-                    </DesktopPasswordWrap>
-                  </DesktopFormWrap>
-                  <SaveBtnWrap>
-                    <li>
-                      <SaveBtn type="submit">
-                        Save{' '}
-                        {/* {isLoading && !isAvatarLoading && <ContentLoader />} */}
-                      </SaveBtn>
-                    </li>
-                    {/* <li>
-                      <DeleteBtn type="button" onClick={toggleDeleteModal}>
-                        Delete your account?
-                      </DeleteBtn>
-                    </li> */}
-                  </SaveBtnWrap>
-                </Form>
-              )}
-            </Formik>
-          }
+                        <IconBtn
+                          type="button"
+                          onClick={handlePasswordVisibility}
+                        >
+                          {isPasswordShown ? (
+                            <PasswordIcon>
+                              <use href={`${sprite}#icon-to-open`}></use>
+                            </PasswordIcon>
+                          ) : (
+                            <PasswordIcon>
+                              <use href={`${sprite}#icon-to-hide`}></use>
+                            </PasswordIcon>
+                          )}
+                        </IconBtn>
+                      </PasswordInputWrap>
+                      {values.currentPass && !values.newPass && (
+                        <StyledErrorText>
+                          Please, enter new password
+                        </StyledErrorText>
+                      )}
+                      <StyledErrorMessage component="p" name="newPass" />
+                    </PasswordFormField>
+                    <LastPasswordFormField>
+                      <PasswordLabel htmlFor="repNewPass">
+                        Repeat new password:
+                      </PasswordLabel>
+                      <PasswordInputWrap>
+                        <Input
+                          type={isPasswordShown ? 'text' : 'password'}
+                          id="repNewPass"
+                          name="repNewPass"
+                          className={
+                            values.newPass !== values.repNewPass
+                              ? 'error-input'
+                              : null
+                          }
+                          placeholder="Password"
+                          autoComplete="new-password"
+                        />
+                        <IconBtn
+                          type="button"
+                          onClick={handlePasswordVisibility}
+                        >
+                          {isPasswordShown ? (
+                            <PasswordIcon>
+                              <use href={`${sprite}#icon-to-open`}></use>
+                            </PasswordIcon>
+                          ) : (
+                            <PasswordIcon>
+                              <use href={`${sprite}#icon-to-hide`}></use>
+                            </PasswordIcon>
+                          )}
+                        </IconBtn>
+                      </PasswordInputWrap>
+                      <StyledErrorMessage component="p" name="repNewPass" />
+                    </LastPasswordFormField>
+                  </DesktopPasswordWrap>
+                </DesktopFormWrap>
+                <SaveBtnWrap>
+                  <li>
+                    <SaveBtn type="submit">
+                      Save{' '}
+                      {/* {isLoading && !isAvatarLoading && <ContentLoader />} */}
+                    </SaveBtn>
+                  </li>
+                </SaveBtnWrap>
+              </Form>
+            )}
+          </Formik>
         </ModalWrap>
       </BaseModalWindow>
-      {/* <UserDeleteModal onClose={toggleDeleteModal} onShow={isDeleteModalOpen} /> */}
     </>
   );
 };

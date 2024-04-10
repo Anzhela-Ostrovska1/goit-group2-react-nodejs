@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Field, ErrorMessage } from 'formik';
 
 export const FormText = styled.p`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
@@ -11,7 +11,7 @@ export const FormText = styled.p`
 export const StyledLabel = styled.label`
   display: inline-block;
   margin-bottom: 8px;
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
@@ -28,7 +28,7 @@ export const IconDownload = styled.svg`
   width: 16px;
   height: 16px;
   fill: none;
-  stroke: ${({ theme }) => theme.color.accent};
+  stroke: ${({ theme }) => theme.color.primaryAccent};
   stroke-linecap: round;
   stroke-linejoin: round;
 `;
@@ -59,7 +59,7 @@ export const DownloadBtn = styled.label`
 `;
 
 export const DownloadBtnText = styled.span`
-  color: ${({ theme }) => theme.color.accent};
+  color: ${({ theme }) => theme.color.primaryAccent};
   font-size: 14px;
   font-weight: 500;
   line-height: 18px; /* 128.571% */
@@ -97,7 +97,6 @@ export const GenderText = styled(FormText)`
 `;
 
 export const RadioBtn = styled(Field)`
-  opacity: 0;
   position: absolute;
 
   + span {
@@ -107,7 +106,6 @@ export const RadioBtn = styled(Field)`
     cursor: pointer;
 
     &:before {
-      content: '';
       position: absolute;
       left: 0;
       top: 50%;
@@ -115,8 +113,8 @@ export const RadioBtn = styled(Field)`
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      border: 1px solid ${props => props.theme.color.accent};
-      background-color: ${({ theme }) => theme.color.white};
+      border: 1px solid ${props => props.theme.color.primaryAccent};
+      background-color: ${({ theme }) => theme.color.primaryWhite};
     }
 
     &:after {
@@ -145,7 +143,7 @@ export const RadioBtnWrap = styled.div`
 `;
 
 export const RadioBtnText = styled.span`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 16px;
   line-height: 1.25; /* 125% */
 `;
@@ -172,10 +170,10 @@ export const Input = styled(Field)`
   font-size: 16px;
   line-height: 1.25;
   outline: transparent; /* 125% */
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.primaryWhite};
 
   &:focus {
-    color: ${({ theme }) => theme.color.accent};
+    color: ${({ theme }) => theme.color.primaryAccent};
   }
 
   &::placeholder {
@@ -221,7 +219,7 @@ export const PasswordText = styled(FormText)`
 
 export const PasswordLabel = styled.label`
   margin-bottom: 8px;
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 16px;
   line-height: 1.25; /* 125% */
 `;
@@ -230,7 +228,7 @@ export const SaveBtn = styled.button`
   min-width: 100%;
   padding: 8px 30px;
   border-radius: 10px;
-  background: ${({ theme }) => theme.color.accent};
+  background: ${({ theme }) => theme.color.primaryAccent};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   color: #fff;
   font-size: 16px;
