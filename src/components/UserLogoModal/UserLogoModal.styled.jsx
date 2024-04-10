@@ -32,10 +32,22 @@ export const PopBtn = styled.button`
   font-size: 16px;
   line-height: 20px;
   color: ${({ theme }) => theme.color.primaryAccent};
+  transition: color ${({ theme }) => theme.transition.modal};
+  &:is(:hover, :focus) {
+    color: ${({ theme }) => theme.color.secondaryYellow};
+  }
+
+  &:is(:hover, :focus) svg {
+    stroke: ${({ theme }) => theme.color.secondaryYellow};
+  }
 `;
 export const PopIcon = styled.svg`
   width: 16px;
   height: 16px;
   fill: transparent;
   stroke: ${({ theme }) => theme.color.primaryAccent};
+  transition: stroke ${({ theme }) => theme.transition.modal};
+  &:hover {
+    stroke: ${({ theme }) => theme.color.secondaryYellow};
+  }
 `;

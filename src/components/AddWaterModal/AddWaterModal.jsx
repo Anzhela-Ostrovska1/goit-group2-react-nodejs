@@ -18,6 +18,7 @@ import {
   CounterBox,
   TimeInput,
   BottomBox,
+  StyledIcon,
 } from './AddWaterModal.styled';
 import {
   addWaterThunk,
@@ -119,9 +120,9 @@ export default function AddWaterModal({ onClose }) {
     <Wrapper onClick={handleOffIsEditTime}>
       <Container>
         <ButtonClose onClick={onClose}>
-          <svg width="24" height="24">
+          <StyledIcon width="24" height="24">
             <use href={`${sprite}#icon-close`}></use>
-          </svg>
+          </StyledIcon>
         </ButtonClose>
         <MainTitle>Add water</MainTitle>
         <BoldText>Choose a value:</BoldText>

@@ -37,6 +37,11 @@ export const AddButton = styled.button`
   font-size: 16px;
   line-height: 20px;
   gap: 8px;
+  transition: color ${({ theme }) => theme.transition.main};
+  &:hover {
+    color: ${({ theme }) => theme.color.secondaryYellow};
+  }
+ 
 
   @media screen and (min-width: 768px) {
     font-size: 18px;

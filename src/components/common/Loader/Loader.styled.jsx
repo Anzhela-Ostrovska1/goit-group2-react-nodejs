@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 
 export const LoaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
-  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

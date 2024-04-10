@@ -41,11 +41,15 @@ export const ButtonClose = styled.button`
   padding: 0;
   background-color: transparent;
   cursor: pointer;
-
+  
   @media screen and (min-width: 768px) {
     top: 32px;
     right: 24px;
   }
+`;
+export const StyledIcon = styled.svg`
+  fill: transparent;
+  stroke: ${({ theme }) => theme.color.primaryAccent};
 `;
 export const MainTitle = styled.h2`
   font-weight: 500;
@@ -129,6 +133,14 @@ export const ButtonSubmit = styled.button`
   padding: 8px 30px;
   width: 256px;
   height: 36px;
+  transition: color ${({ theme }) => theme.transition.modal};
+  &:hover,
+  &:focus {
+    box-shadow: ${({ theme }) => theme.boxShadowforButton.hoverButton};
+  }
+  &:active {
+    box-shadow: ${({ theme }) => theme.boxShadowforButton.activeButton};
+  }
 
   @media screen and (min-width: 768px) {
     width: 160px;
