@@ -1,32 +1,22 @@
 import { FaPlus } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectNotes } from '../../redux/water/waterSelectors';
-import glass from '../../assets/images/background/home/svg/glass.svg';
-import edit from '../../assets/images/background/home/svg/edit.svg';
-import delite from '../../assets/images/background/home/svg/delete.svg';
+
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import EditWaterModal from '../EditWaterModal/EditWaterModal';
 
 import { DeleteEntryModal } from '../Home/DeleteEntryModal/DeleteEntryModal';
 
-import {
-  AddButton,
-  Amount,
-  DeleteButton,
-  EditButton,
-  Time,
-  Title,
-  WaterList,
-  WaterListItem,
-  WaterPortion,
-} from './TodayWaterList.styled';
+import { AddButton, Title, WaterList } from './TodayWaterList.styled';
 import { useState } from 'react';
 import { setCurrentNote } from '../../redux/water/waterSlice';
-import { formatDate } from '../../helpers/formatDate';
+
+import WaterItem from '../WaterItem/WaterItem';
 
 const TodayWaterList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const [waterId, setWaterId] = useState('');
 
   const dispatch = useDispatch();
 
@@ -46,17 +36,18 @@ const TodayWaterList = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
-  const openEditModal = ({ amount, date, _id }) => {
+  const openEditModal = ({ amount, date, id }) => {
     setEditModalOpen(true);
-    dispatch(setCurrentNote({ amount, date, _id }));
+    dispatch(setCurrentNote({ amount, date, id }));
   };
 
   const closeDeleteModal = () => {
     setDeleteModalOpen(false);
   };
 
-  const openDeleteModal = () => {
+  const openDeleteModal = id => {
     setDeleteModalOpen(true);
+    setWaterId(id);
   };
 
   return (
@@ -65,47 +56,36 @@ const TodayWaterList = () => {
         <Title>Today</Title>
         <WaterList>
           {waterList.length > 0 &&
-            waterList.map(({ _id, amount, date }) => {
+            waterList.map(({ _id: id, amount, date }) => {
               return (
-                <>
-                  <WaterListItem key={_id}>
-                    <WaterPortion>
-                      <img src={glass} alt="Icon glass" />
-                      <Amount>{amount} ml</Amount>
-                      <Time>{formatDate(date)}</Time>
-                    </WaterPortion>
-                    <div>
-                      <EditButton
-                        type="button"
-                        onClick={() => openEditModal({ _id, amount, date })}
-                      >
-                        <img src={edit} alt="Icon glass" />
-                      </EditButton>
-                      <DeleteButton type="button" onClick={openDeleteModal}>
-                        <img src={delite} alt="Icon glass" />
-                      </DeleteButton>
-                      {editModalOpen && (
-                        <EditWaterModal
-                          isOpen={editModalOpen}
-                          onClose={closeEditModal} // потрібно доопрацювати editModal і додати props
-                        />
-                      )}
-                      {deleteModalOpen && (
-                        <DeleteEntryModal
-                          onShow={deleteModalOpen}
-                          onClose={closeDeleteModal}
-                          id={_id}
-                        />
-                      )}
-                    </div>
-                  </WaterListItem>
-                </>
+                <WaterItem
+                  key={id}
+                  id={id}
+                  amount={amount}
+                  date={date}
+                  onDelete={openDeleteModal}
+                  onEdit={openEditModal}
+                />
               );
             })}
           {editModalOpen && (
             <EditWaterModal isOpen={editModalOpen} onClose={closeEditModal} />
           )}
         </WaterList>
+
+        {editModalOpen && (
+          <EditWaterModal
+            isOpen={editModalOpen}
+            onClose={closeEditModal} // потрібно доопрацювати editModal і додати props
+          />
+        )}
+        {deleteModalOpen && (
+          <DeleteEntryModal
+            isShow={deleteModalOpen}
+            onClose={closeDeleteModal}
+            id={waterId}
+          />
+        )}
       </div>
 
       <AddButton type="button" onClick={openModal}>
