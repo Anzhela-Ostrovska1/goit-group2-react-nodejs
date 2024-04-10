@@ -37,7 +37,6 @@ const validationSchema = Yup.object({
 export const SigninForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const isLoading = useSelector(selectIsLoading);
-  console.log(isLoading);
   const dispatch = useDispatch();
 
   const handleTogglePassword = () => {

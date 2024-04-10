@@ -111,4 +111,5 @@ export const GlobalStyles = css`
   * {
     scrollbar-color: #9ebbff rgba(239, 237, 232, 0.1);
   }
+
 `;
