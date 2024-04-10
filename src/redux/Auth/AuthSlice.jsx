@@ -43,11 +43,10 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isLoggedIn = true;
       state.isLoading = false;
-      state.error = null;
     });
-    builder.addCase(registerThunk.rejected, (state, action) => {
+    builder.addCase(registerThunk.rejected, (state, { error, payload }) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = payload ?? error.message;
     });
 
     // logIn
@@ -60,11 +59,10 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isLoggedIn = true;
       state.isLoading = false;
-      state.error = null;
     });
-    builder.addCase(logInThunk.rejected, (state, action) => {
+    builder.addCase(logInThunk.rejected, (state, { error, payload }) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = payload ?? error.message;
     });
 
     // logOut
@@ -72,9 +70,9 @@ const authSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(logOutThunk.fulfilled, state => {
-      localStorage.clear();
       return { ...initialState };
     });
+
     builder.addCase(logOutThunk.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { Notify } from 'notiflix';
 import {
   editUserInfo,
   logout,
@@ -9,6 +9,15 @@ import {
   updateAvatar,
   updateWaterRate,
 } from '../Api/api';
+Notify.init({
+  cssAnimationStyle: 'zoom',
+  cssAnimationDuration: 550,
+  failure: {
+    background: '#9ebbff',
+    textColor: '#fff',
+    notiflixIconColor: 'rgba(255, 0, 0, 0.2)',
+  },
+});
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
@@ -18,7 +27,7 @@ export const registerThunk = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 409) {
-        toast.error(`User with email - ${credentials.email}, already exist`);
+        Notify.failure(`User with email - ${credentials.email}, already exist`);
       }
       return rejectWithValue(error.message);
     }
@@ -33,7 +42,7 @@ export const logInThunk = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error(`Email or password is wrong`);
+        Notify.failure(`Email or password is wrong`);
       }
       return rejectWithValue(error.message);
     }
@@ -86,7 +95,7 @@ export const updateWaterRateThunk = createAsyncThunk(
       return rate;
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error(`WaterRate" must be greater than or equal to 0`);
+        Notify.failure(`WaterRate" must be greater than or equal to 0`);
       }
       return rejectWithValue(error.message);
     }
@@ -101,7 +110,7 @@ export const updateAvatarThunk = createAsyncThunk(
       return avatarURL;
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error(`Invalide file extention`);
+        Notify.failure(`Invalide file extention`);
       }
       return rejectWithValue(error.message);
     }
@@ -116,7 +125,7 @@ export const editUserInfoThunk = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 401) {
-        toast.error(`Current password is incorrect`);
+        Notify.failure(`Current password is incorrect`);
       }
       return rejectWithValue(error.message);
     }
