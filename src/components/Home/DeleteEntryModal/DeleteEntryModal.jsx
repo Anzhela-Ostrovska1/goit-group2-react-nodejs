@@ -15,7 +15,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { formatCurrentDate } from '../../../helpers/formatDate';
 
-export const DeleteEntryModal = ({ onClose, onShow, id }) => {
+export const DeleteEntryModal = ({ onClose, isShow, id }) => {
   const dispatch = useDispatch();
   const { year, month } = formatCurrentDate();
   console.log('id в DeleteEntryModal який прийшов з пропсів', id);
@@ -29,7 +29,7 @@ export const DeleteEntryModal = ({ onClose, onShow, id }) => {
   };
 
   return (
-    <BaseModalWindow onClose={onClose} onShow={onShow} title={'Delete Entry'}>
+    <BaseModalWindow onClose={onClose} isShow={isShow} title={'Delete Entry'}>
       <ModalContainer>
         <ModalTitle>Are you sure you want to delete the entry?</ModalTitle>
         <ButtonContainer>
