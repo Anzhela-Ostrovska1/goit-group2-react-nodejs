@@ -61,7 +61,10 @@ export const UserLogoModal = () => {
         />
       )}
       {isSettingsModalOpen && (
-        <SettingsModal onClose={handleCloseSettingsModal} />
+        <SettingsModal
+          onClose={handleCloseSettingsModal}
+          isShow={isSettingsModalOpen}
+        />
       )}
     </Popover>
   );
