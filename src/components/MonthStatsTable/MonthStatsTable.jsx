@@ -5,6 +5,7 @@ import { fetchMonthWaterThunk } from '../../redux/water/waterOperations';
 import {
   selectIsLoading,
   selectMonthNote,
+  selectNotes,
 } from '../../redux/water/waterSelectors';
 import { getNewDate } from '../../helpers/getNewDate';
 import MonthCalendar from './MonthCalendar';
@@ -15,6 +16,7 @@ import Loader from '../common/Loader/Loader';
 const MonthStatsTable = () => {
   const monthData = useSelector(selectMonthNote);
   const isLoading = useSelector(selectIsLoading);
+  const todayWaterList = useSelector(selectNotes);
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ const MonthStatsTable = () => {
     dispatch(
       fetchMonthWaterThunk({ year: year.toString(), month: month.toString() }),
     );
-  }, [dispatch, year, month]);
+  }, [dispatch, year, month, todayWaterList]);
 
   const changeMonth = useCallback(
     // This function changes the month based on the given direction ('forward' or 'back')

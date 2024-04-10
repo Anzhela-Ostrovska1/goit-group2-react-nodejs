@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseModalWindow } from '../../common/BaseModalWindow/BaseModalWindow';
 
 import {
@@ -7,14 +6,25 @@ import {
   ButtonStyle,
   ModalTitle,
 } from './DeleteEntryModal.styled';
-import { deleteWaterThunk } from '../../../redux/water/waterOperations';
+import {
+  deleteWaterThunk,
+  fetchMonthWaterThunk,
+  fetchTodayWaterThunk,
+} from '../../../redux/water/waterOperations';
 
 import { useDispatch } from 'react-redux';
+import { formatCurrentDate } from '../../../helpers/formatDate';
 
 export const DeleteEntryModal = ({ onClose, onShow, id }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => {
+  const { year, month } = formatCurrentDate();
+  console.log('id в DeleteEntryModal який прийшов з пропсів', id);
+
+  const handleDelete = id => {
+    console.log('id в DeleteEntryModal - handleDelete', id);
     dispatch(deleteWaterThunk(id));
+    dispatch(fetchMonthWaterThunk({ year, month }));
+    dispatch(fetchTodayWaterThunk());
     onClose();
   };
 
@@ -23,9 +33,11 @@ export const DeleteEntryModal = ({ onClose, onShow, id }) => {
       <ModalContainer>
         <ModalTitle>Are you sure you want to delete the entry?</ModalTitle>
         <ButtonContainer>
-          <ButtonStyle onClick={handleDelete}>Delete</ButtonStyle>
+          <ButtonStyle onClick={() => handleDelete(id)}>Delete</ButtonStyle>
 
-          <ButtonStyle onClick={onClose}  style={{color:'#407BFF'}}>Cancel</ButtonStyle>
+          <ButtonStyle onClick={onClose} style={{ color: '#407BFF' }}>
+            Cancel
+          </ButtonStyle>
         </ButtonContainer>
       </ModalContainer>
     </BaseModalWindow>

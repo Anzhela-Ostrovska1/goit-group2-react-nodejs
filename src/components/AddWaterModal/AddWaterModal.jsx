@@ -19,9 +19,13 @@ import {
   TimeInput,
   BottomBox,
 } from './AddWaterModal.styled';
-import { addWaterThunk } from '../../redux/water/waterOperations';
+import {
+  addWaterThunk,
+  fetchMonthWaterThunk,
+} from '../../redux/water/waterOperations';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
+import { formatCurrentDate } from '../../helpers/formatDate';
 
 Modal.setAppElement('#root');
 export default function AddWaterModal({ onClose }) {
@@ -30,6 +34,8 @@ export default function AddWaterModal({ onClose }) {
   const [currentAmount, setCurrentAmount] = useState(0);
   const dispatch = useDispatch();
   const [time, setTime] = useState(new Date());
+  const { year, month } = formatCurrentDate();
+
   const handleEditTime = (e, type = '') => {
     let currentTime = new Date(time);
 
@@ -48,6 +54,7 @@ export default function AddWaterModal({ onClose }) {
   };
   const handleAddWater = () => {
     dispatch(addWaterThunk({ amount, date: Date(time) }));
+    dispatch(fetchMonthWaterThunk({ year, month }));
     onClose();
   };
 
