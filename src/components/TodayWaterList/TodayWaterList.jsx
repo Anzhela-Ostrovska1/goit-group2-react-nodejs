@@ -57,24 +57,15 @@ const TodayWaterList = () => {
         <WaterList>
           {waterList.length > 0 &&
             waterList.map(({ _id: id, amount, date }) => {
-return (
-    <WaterListItem key={id}>
-      <WaterPortion>
-        <img src={glass} alt="Icon glass" />
-        <Amount>{amount} ml</Amount>
-        <Time>{formatDate(date)}</Time>
-      </WaterPortion>
-      <div>
-        <EditButton type="button" onClick={() => onEdit({ id, amount, date })}>
-          <img src={edit} alt="Icon glass" />
-        </EditButton>
-        <DeleteButton type="button" onClick={() => onDelete(id)}>
-          <img src={delite} alt="Icon glass" />
-        </DeleteButton>
-      </div>
-    </WaterListItem>
-  );
-};
+              return (
+                <WaterItem
+                  key={id}
+                  id={id}
+                  amount={amount}
+                  date={date}
+                  onDelete={openDeleteModal}
+                  onEdit={openEditModal}
+                />
               );
             })}
           {editModalOpen && (
@@ -83,7 +74,10 @@ return (
         </WaterList>
 
         {editModalOpen && (
-          <EditWaterModal isOpen={editModalOpen} onClose={closeEditModal} />
+          <EditWaterModal
+            isOpen={editModalOpen}
+            onClose={closeEditModal} // потрібно доопрацювати editModal і додати props
+          />
         )}
         {deleteModalOpen && (
           <DeleteEntryModal
