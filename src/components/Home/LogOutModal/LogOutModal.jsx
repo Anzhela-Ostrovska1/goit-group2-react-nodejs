@@ -1,4 +1,3 @@
-import React from 'react';
 import { BaseModalWindow } from '../../common/BaseModalWindow/BaseModalWindow.jsx';
 import {
   ModalContainer,
@@ -7,27 +6,23 @@ import {
   ButtonStyle,
 } from './LogOutModal.styled.jsx';
 import { logOutThunk } from '../../../redux/Auth/AuthOperations.jsx';
-import { logout } from '../../../redux/Api/api.js';
-import {useDispatch} from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-export const UserLogoutModal = ({ onClose, onShow }) => {
+export const UserLogoutModal = ({ onClose, isShow }) => {
+  const dispatch = useDispatch();
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  
   const handleLogout = () => {
-    dispatch(logOutThunk())
-    dispatch(logout())
-    navigate('/login')
-  }
+    dispatch(logOutThunk());
+  };
   return (
-    <BaseModalWindow onClose={onClose} onShow={onShow} title="Log out">
+    <BaseModalWindow onClose={onClose} isShow={isShow} title="Log out">
       <ModalContainer>
         <ModalTitle>Do you really want to leave?</ModalTitle>
         <ButtonContainer>
           <ButtonStyle onClick={handleLogout}>Log out</ButtonStyle>
-          <ButtonStyle onClick={onClose} style={{color:'#407BFF'}}>Cancel</ButtonStyle>
+          <ButtonStyle onClick={onClose} style={{ color: '#407BFF' }}>
+            Cancel
+          </ButtonStyle>
         </ButtonContainer>
       </ModalContainer>
     </BaseModalWindow>
