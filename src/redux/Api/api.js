@@ -42,7 +42,9 @@ export const editUserInfo = async userData => {
 };
 
 export const updateAvatar = async avatar => {
-  const { data } = await axios.patch('/users/current', { avatar });
+  const { data } = await axios.patch('/users/current', avatar, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
   return data;
 };
 

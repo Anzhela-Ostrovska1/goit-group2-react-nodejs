@@ -114,7 +114,7 @@ const authSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(updateAvatarThunk.fulfilled, (state, { payload }) => {
-      state.user.avatarURL = payload;
+      state.user.avatarURL = payload.avatarURL;
       state.isLoading = false;
     });
     builder.addCase(updateAvatarThunk.rejected, (state, action) => {

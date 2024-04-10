@@ -94,7 +94,7 @@ export const SettingsModal = ({ onClose, onShow }) => {
       return;
     }
 
-    const { gender, name, email, currentPass, newPass } = values;
+    const { gender, name, email, currentPass, newPass, repNewPass } = values;
 
     const formData = {
       gender,
@@ -102,6 +102,7 @@ export const SettingsModal = ({ onClose, onShow }) => {
       email,
       currentPass,
       newPass,
+      repNewPass,
     };
 
     const dataSend = Object.entries(formData).reduce((acc, [key, value]) => {
@@ -110,8 +111,6 @@ export const SettingsModal = ({ onClose, onShow }) => {
       }
       return acc;
     }, {});
-
-    console.log('Sending data:', dataSend);
 
     dispatch(editUserInfoThunk(dataSend)).then(data => {
       if (!data.error) {
@@ -128,7 +127,6 @@ export const SettingsModal = ({ onClose, onShow }) => {
   };
 
   const handleAvatarDownload = e => {
-    console.log(e);
     let formData = new FormData();
     formData.append('avatar', e.target.files[0]);
 
