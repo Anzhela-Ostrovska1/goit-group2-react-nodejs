@@ -22,6 +22,10 @@ export const UserLogoModal = () => {
     setIsLogOutModalOpen(true);
   };
 
+  const handleCloseLogOutButtonClick = () => {
+    setIsLogOutModalOpen(false);
+  };
+
   const handleSettingsButtonClick = () => {
     setIsSettingsModalOpen(true);
   };
@@ -50,9 +54,17 @@ export const UserLogoModal = () => {
           </PopBtn>
         </PopItem>
       </PopList>
-      {isLogOutModalOpen && <UserLogoutModal />}
+      {isLogOutModalOpen && (
+        <UserLogoutModal
+          onClose={handleCloseLogOutButtonClick}
+          isShow={isLogOutModalOpen}
+        />
+      )}
       {isSettingsModalOpen && (
-        <SettingsModal onClose={handleCloseSettingsModal} />
+        <SettingsModal
+          onClose={handleCloseSettingsModal}
+          isShow={isSettingsModalOpen}
+        />
       )}
     </Popover>
   );

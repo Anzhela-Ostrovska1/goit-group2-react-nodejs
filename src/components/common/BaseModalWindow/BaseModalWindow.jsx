@@ -10,7 +10,7 @@ import {
 } from './BaseModalWindow.styled';
 import sprite from 'src/assets/images/sprite/sprite.svg';
 
-export const BaseModalWindow = ({ onShow, children, title, onClose }) => {
+export const BaseModalWindow = ({ isShow, children, title, onClose }) => {
   const modalRoot = document.querySelector('#modal-root');
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const BaseModalWindow = ({ onShow, children, title, onClose }) => {
       }
     };
 
-    if (onShow) {
+    if (isShow) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleEsc);
     }
@@ -29,9 +29,9 @@ export const BaseModalWindow = ({ onShow, children, title, onClose }) => {
       document.body.style.overflow = 'auto';
       window.removeEventListener('keydown', handleEsc);
     };
-  }, [onShow, onClose]);
+  }, [isShow, onClose]);
 
-  if (!onShow) {
+  if (!isShow) {
     return null;
   }
 
@@ -57,6 +57,6 @@ export const BaseModalWindow = ({ onShow, children, title, onClose }) => {
 BaseModalWindow.propTypes = {
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
-  onShow: PropTypes.bool.isRequired,
+  isShow: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
 };
