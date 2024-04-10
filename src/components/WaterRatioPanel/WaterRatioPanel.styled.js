@@ -122,12 +122,14 @@ export const AddWaterButton = styled.button`
   size: 16px;
   line-height: 20px;
   cursor: pointer;
-  transition: 350ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: color ${({ theme }) => theme.transition.main};
   &:hover,
   &:focus {
-    box-shadow: 0px 4px 8px 0px #407bff34;
+    box-shadow: ${({ theme }) => theme.boxShadowforButton.hoverButton};
   }
-
+  &:active {
+    box-shadow: ${({ theme }) => theme.boxShadowforButton.activeButton};
+  }
   @media screen and (min-width: 768px) {
     width: 336px;
   }

@@ -5,7 +5,6 @@ import { selectIsLoading } from '../../redux/Auth/AuthSelectors';
 import {
   BottleBg,
   FormContainer,
-  SignupContainer,
   StyledLink,
   Field,
   Form,
@@ -15,6 +14,7 @@ import {
   FormButton,
   EyeIcon,
 } from '../SignUpForm/SignUpForm.styled';
+import { SigninContainer } from './SignInForm.styled.jsx';
 import { logInThunk } from '../../redux/Auth/AuthOperations.jsx';
 
 import sprite from 'src/assets/images/sprite/sprite.svg';
@@ -44,7 +44,7 @@ export const SigninForm = () => {
   };
 
   return (
-    <SignupContainer>
+    <SigninContainer>
       <BottleBg />
       <FormContainer>
         <FormTitle>Sign In</FormTitle>
@@ -103,6 +103,6 @@ export const SigninForm = () => {
         </Formik>
         <StyledLink to="/signup">Sign up</StyledLink>
       </FormContainer>
-    </SignupContainer>
+    </SigninContainer>
   );
 };

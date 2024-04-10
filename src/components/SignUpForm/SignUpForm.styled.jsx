@@ -61,24 +61,11 @@ export const BottleBg = styled.div`
     width: 916px;
     min-height: 680px;
     background-image: url(${bottleDes1x});
-    /* background-position: left center; */
-    /* flex-grow: 1; */
-    /* background-size: cover; 
-  background-position: center center; */
     top: 50px;
     left: -130px;
-
-    /* position: absolute;
-   
-   left: -20px; 
-  top: 20px
-    */
-    /* background-attachment: fixed;  */
   }
-
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
     background-image: url(${bottleDes2x});
-    /* background-position: -120px center; */
   }
 `;
 
@@ -103,7 +90,6 @@ export const FormContainer = styled.div`
     min-height: 312px;
     /* padding-right: 104px; */
     flex-grow: 1;
-    /* padding-left: 104px; */
   }
 `;
 
@@ -151,6 +137,7 @@ export const Field = styled(FormikField)`
   border-radius: 6px;
   border: 1px solid ${({ theme }) => theme.color.secondaryPowderBlue};
   padding: 12px 10px;
+  -webkit-text-security: disc;
   color: ${({ theme }) => theme.color.primaryAccent};
   &::placeholder {
     color: ${({ theme }) => theme.color.secondaryLightBlue};
