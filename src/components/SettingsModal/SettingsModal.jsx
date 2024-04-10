@@ -73,7 +73,7 @@ const settingsFormValidationSchema = Yup.object().shape({
   ),
 });
 
-export const SettingsModal = ({ onClose, onShow }) => {
+export const SettingsModal = ({ onClose, isShow }) => {
   const dispatch = useDispatch();
   const { avatarURL, email, name, gender } = useSelector(selectUser);
   // const { isLoading } = useSelector(selectIsLoading);
@@ -142,7 +142,7 @@ export const SettingsModal = ({ onClose, onShow }) => {
 
   return (
     <>
-      <BaseModalWindow onClose={onClose} onShow={true} title="Settings">
+      <BaseModalWindow onClose={onClose} isShow={isShow} title="Settings">
         <ModalWrap>
           <Formik
             initialValues={initialValues}
