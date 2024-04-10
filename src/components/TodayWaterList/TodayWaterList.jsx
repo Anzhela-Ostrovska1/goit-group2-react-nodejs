@@ -92,7 +92,7 @@ const TodayWaterList = () => {
                       )}
                       {deleteModalOpen && (
                         <DeleteEntryModal
-                          onShow={deleteModalOpen}
+                          isShow={deleteModalOpen}
                           onClose={closeDeleteModal}
                           id={_id}
                         />
