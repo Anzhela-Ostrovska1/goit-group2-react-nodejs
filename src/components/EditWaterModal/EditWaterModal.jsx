@@ -22,10 +22,14 @@ import {
   AccentRegularText,
   NormalTextWithoutMargin,
 } from './EditWaterModal.styled';
-import { editWaterThunk } from '../../redux/water/waterOperations';
+import {
+  editWaterThunk,
+  fetchMonthWaterThunk,
+} from '../../redux/water/waterOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentNote } from '../../redux/water/waterSelectors';
 import { useCallback } from 'react';
+import { formatCurrentDate } from '../../helpers/formatDate';
 
 Modal.setAppElement('#root');
 export default function EditWaterModal({ onClose }) {
@@ -36,6 +40,8 @@ export default function EditWaterModal({ onClose }) {
   const [currentAmount, setCurrentAmount] = useState(0);
   const dispatch = useDispatch();
   const [time, setTime] = useState(currentNote.date);
+  const { year, month } = formatCurrentDate();
+
   const handleEditTime = (e, type = '') => {
     let currentTime = new Date(time);
 
@@ -56,6 +62,7 @@ export default function EditWaterModal({ onClose }) {
     dispatch(
       editWaterThunk({ _id: currentNote._id, amount, date: Date(time) }),
     );
+    dispatch(fetchMonthWaterThunk({ year, month }));
     onClose();
   };
 
