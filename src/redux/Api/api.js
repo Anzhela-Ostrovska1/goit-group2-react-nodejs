@@ -46,7 +46,11 @@ export const updateAvatar = async avatar => {
   return data;
 };
 
-export const refreshUser = () => {};
+export const refreshUser = async token => {
+  setToken(token);
+  const { data } = await axios('/users/current');
+  return data;
+};
 
 // Water
 
