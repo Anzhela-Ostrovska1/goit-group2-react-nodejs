@@ -59,9 +59,7 @@ export default function EditWaterModal({ onClose }) {
     setTime(currentTime);
   };
   const handleEditWater = () => {
-    dispatch(
-      editWaterThunk({ _id: currentNote._id, amount, date: Date(time) }),
-    );
+    dispatch(editWaterThunk({ _id: currentNote.id, amount, date: Date(time) }));
     dispatch(fetchMonthWaterThunk({ year, month }));
     onClose();
   };
