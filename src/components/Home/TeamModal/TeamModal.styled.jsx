@@ -16,22 +16,11 @@ export const TeamBox = styled.div`
   }
 `;
 
-export const Title = styled.h2`
-  color: ${({ theme }) => theme.color.black};
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.78;
-`;
-
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin-top: 0;
   gap: 16px;
-
-  /* @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    gap: 16px;
-  } */
 `;
 
 export const Item = styled.li`
@@ -53,10 +42,6 @@ export const Item = styled.li`
     width: 168px;
     height: 253px;
   }
-
-  /* &:hover {
-    transform: scale(1.03);
-  } */
 `;
 
 export const Photo = styled.img`
