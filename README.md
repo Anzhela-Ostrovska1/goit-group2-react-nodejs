@@ -76,9 +76,6 @@ Navigate with ease using React Router. Our key paths include:
   Remember: No simultaneous or zero entries allowed. Edit or delete entries as
   needed. The integrated calendar helps you visualize daily consumption
   percentages.
-- `/reset-password` - **Password Reset Page:** Follow the email link here to set
-  a new password. Remember: Passwords must be 6 characters minimum. Successfully
-  resetting redirects you to the main page.
 
 ### [UA] Навігація
 
@@ -106,10 +103,6 @@ Navigate with ease using React Router. Our key paths include:
   допускаються одночасні або нульові записи. Редагуйте або видаляйте записи за
   потреби. Інтегрований календар допомагає вам візуалізувати відсотки щоденного
   споживання.
-- `/reset-password` - **Сторінка скидання пароля:** Слідуйте за посиланням
-  електронної пошти тут, щоб встановити новий пароль. Пам'ятайте: Паролі повинні
-  містити мінімум 6 символів. Успішне скидання перенаправляє вас на головну
-  сторінку.
 
 ### [EN] Team Members
 
