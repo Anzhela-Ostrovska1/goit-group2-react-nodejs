@@ -1,4 +1,4 @@
-import{n as u,r as w,p as Ct,g as Zt,e as en,f as tn,a as re,R as $e,j as a,N as Ve,h as nn,i as xe,k as X,l as Et,s as Xe,b as rn,L as on,m as Z,o as an,q as sn,B as cn,t as ln,v as jt,w as dn}from"./index-498eade7.js";import{b as un}from"./bg_element_des@1x-1805b66c.js";const fn=u.div`
+import{n as u,r as w,p as Ct,g as Zt,e as en,f as tn,a as re,R as $e,j as a,N as Ve,h as nn,i as xe,k as X,l as Et,s as Xe,b as rn,L as on,m as Z,o as an,q as sn,B as cn,t as ln,v as jt,w as dn}from"./index-798a7d6b.js";import{b as un}from"./bg_element_des@1x-1805b66c.js";const fn=u.div`
   padding: 8px 20px;
   flex-direction: column;
   align-items: flex-start;
@@ -870,10 +870,48 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof e.getDerivedStat
     margin-left: 16px;
   }
 `,$a=u.button`
+  position: relative;
   margin-right: 18px;
   background-color: transparent;
+
+  padding: 0;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 16px;
+    height: 1px;
+    background-color: #9ebbff;
+    transition: 350ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  &:is(:hover, :focus)::after {
+    opacity: 1;
+  }
 `,qa=u.button`
   background-color: transparent;
+  position: relative;
+
+  padding: 0;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 16px;
+    height: 1px;
+    background-color: #ef5050;
+    transition: 350ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  &:is(:hover, :focus)::after {
+    opacity: 1;
+  }
 `,za="/goit-group2-react-nodejs/assets/glass-00cf2fb8.svg",Ya="/goit-group2-react-nodejs/assets/edit-7f0c7b6a.svg",Ua="/goit-group2-react-nodejs/assets/delete-6bf30e40.svg",Xa=({id:e,amount:t,date:n,onDelete:r,onEdit:o})=>a.jsxs(La,{children:[a.jsxs(Ba,{children:[a.jsx("img",{src:za,alt:"Icon glass"}),a.jsxs(Ha,{children:[t," ml"]}),a.jsx(Ia,{children:jo(n)})]}),a.jsxs("div",{children:[a.jsx($a,{type:"button",onClick:()=>o({id:e,amount:t,date:n}),children:a.jsx("img",{src:Ya,alt:"Icon glass"})}),a.jsx(qa,{type:"button",onClick:()=>r(e),children:a.jsx("img",{src:Ua,alt:"Icon glass"})})]})]},e),Ga=()=>{const[e,t]=w.useState(!1),[n,r]=w.useState(!1),[o,s]=w.useState(""),l=re(),[i,d]=w.useState(!1),f=X(Ue),h=()=>{t(!1)},p=()=>{t(!0)},g=()=>{r(!1)},y=({amount:C,date:D,id:S})=>{r(!0),l(dn({amount:C,date:D,id:S}))},M=()=>{d(!1)},P=C=>{d(!0),s(C)};return a.jsxs("div",{children:[a.jsxs("div",{children:[a.jsx(Va,{children:"Today"}),a.jsxs(Fa,{children:[f.length>0&&f.map(({_id:C,amount:D,date:S})=>a.jsx(Xa,{id:C,amount:D,date:S,onDelete:P,onEdit:y},C)),n&&a.jsx(Da,{isOpen:n,onClose:g})]}),i&&a.jsx(_a,{isShow:i,onClose:M,id:o})]}),a.jsxs(Ra,{type:"button",onClick:p,children:[a.jsx(aa,{})," Add Water"]}),e&&a.jsx(Ut,{isOpen:e,onClose:h})]})},Qa=Ga;function Ka(e){return zt({tag:"svg",attr:{viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2",strokeLinecap:"round",strokeLinejoin:"round"},child:[{tag:"circle",attr:{cx:"12",cy:"12",r:"10"},child:[]},{tag:"line",attr:{x1:"12",y1:"8",x2:"12",y2:"16"},child:[]},{tag:"line",attr:{x1:"8",y1:"12",x2:"16",y2:"12"},child:[]}]})(e)}const Ja=u.div`
   display: flex;
   justify-content: center;
@@ -988,6 +1026,12 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof e.getDerivedStat
   size: 16px;
   line-height: 20px;
   cursor: pointer;
+
+  transition: color ${({theme:e})=>e.transition.main};
+  &:hover {
+    color: ${({theme:e})=>e.color.secondaryYellow};
+  }
+
   transition: color ${({theme:e})=>e.transition.main};
   &:hover,
   &:focus {
