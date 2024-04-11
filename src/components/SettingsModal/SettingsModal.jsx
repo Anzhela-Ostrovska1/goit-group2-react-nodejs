@@ -137,6 +137,7 @@ export const SettingsModal = ({ onClose, isShow }) => {
       }
     });
     console.log('Avatar is loading');
+
     // setIsAvatarLoading(true);
   };
 
