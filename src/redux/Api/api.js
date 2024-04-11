@@ -67,7 +67,6 @@ export const editWater = async ({ _id, amount, date }) => {
 };
 
 export const deleteWater = async waterID => {
-  console.log('id в Api', waterID);
   const { data } = await axios.delete(`/water/${waterID}`);
   return data;
 };

@@ -30,6 +30,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentNote } from '../../redux/water/waterSelectors';
 import { useCallback } from 'react';
 import { formatCurrentDate } from '../../helpers/formatDate';
+import Notiflix from 'notiflix';
 
 Modal.setAppElement('#root');
 export default function EditWaterModal({ onClose }) {
@@ -60,6 +61,11 @@ export default function EditWaterModal({ onClose }) {
   };
 
   const handleEditWater = () => {
+    if (amount < 1)
+      return Notiflix.Notify.failure(
+        'The amount of water should be no less than 1 ml.',
+      );
+
     dispatch(
       editWaterThunk({ _id: currentNote.id, amount, date: new Date(time) }),
     )
