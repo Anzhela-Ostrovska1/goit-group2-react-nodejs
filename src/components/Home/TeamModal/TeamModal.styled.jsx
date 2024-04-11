@@ -27,7 +27,7 @@ export const Item = styled.li`
   width: 232px;
   height: 340px;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.primaryWhite};
 
   box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
 
@@ -82,14 +82,14 @@ export const TextBox = styled.div`
 `;
 
 export const Name = styled.h3`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
 `;
 
 export const Role = styled.p`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 12px;
   line-height: 1.66;
   margin-bottom: 8px;
@@ -112,6 +112,6 @@ export const SocialLink = styled.a`
   }
 
   &:hover {
-    fill: ${({ theme }) => theme.color.accent};
+    fill: ${({ theme }) => theme.color.primaryAccent};
   }
 `;

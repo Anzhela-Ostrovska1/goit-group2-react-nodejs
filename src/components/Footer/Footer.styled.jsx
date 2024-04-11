@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 export const FooterBox = styled.footer`
   width: 100%;
   height: 40px;
-  background-color: ${({ theme }) => theme.color.footerBackgroundColor};
+  background-color: ${({ theme }) => theme.color.primaryWhite};
 
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ export const FooterBox = styled.footer`
 `;
 
 export const FooterText = styled.p`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 12px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
@@ -32,7 +32,7 @@ export const FooterText = styled.p`
 `;
 
 export const FooterBtn = styled.button`
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.primaryBlack};
   font-size: 12px;
   background-color: transparent;
   padding: 0;
