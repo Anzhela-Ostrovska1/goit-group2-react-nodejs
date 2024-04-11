@@ -5,6 +5,7 @@ export const WaterListItem = styled.li`
   align-items: center;
   gap: 12px;
   justify-content: space-between;
+  border-bottom: 1px solid ${({ theme }) => theme.color.secondaryPowderBlue};
 `;
 
 export const WaterPortion = styled.div`
