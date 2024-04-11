@@ -159,7 +159,6 @@ export default function AddWaterModal({ onClose }) {
           value={currentAmount}
           onBlur={handleBlur}
           onChange={handleChange}
-          type="number"
         ></AmountInput>
         <BottomBox>
           <AccentText>{amount}ml</AccentText>
