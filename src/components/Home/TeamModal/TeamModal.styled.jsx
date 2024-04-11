@@ -104,7 +104,7 @@ export const Role = styled.p`
 export const SocialLink = styled.a`
   width: 24px;
   height: 24px;
-  fill: #9ebbff;
+  fill: ${({ theme }) => theme.color.secondaryLightBlue};
 
   & svg {
     width: 24px;

@@ -42,6 +42,6 @@ export const FooterBtn = styled.button`
   }
 
   &:hover {
-    color: #407bff;
+    color: ${({ theme }) => theme.color.primaryAccent};
   }
 `;
