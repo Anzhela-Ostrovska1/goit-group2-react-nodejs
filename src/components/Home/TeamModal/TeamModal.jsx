@@ -11,31 +11,31 @@ import {
   TextBox,
 } from './TeamModal.styled';
 
-// import anzhelaOstrovska from '../../../assets/images/team/anzhelaOstrovska.jpg';
-// import yaromatv from '../../../assets/images/team/yaromatv.jpg';
+import Anzhela from '../../../assets/images/team/Anzhela.jpg';
+import Yaroslav from '../../../assets/images/team/Yaroslav.jpg';
 import ihorBerezhnyi from '../../../assets/images/team/ihorBerezhnyi.jpg';
-// import olenaUser1982 from '../../../assets/images/team/OlenaUser1982.jpg';
-// import oksanaKorsun from '../../../assets/images/team/oksanaKorsun.jpg';
-// import tauruS111 from '../../../assets/images/team/tauruS111.jpg';
-// import ninel35 from '../../../assets/images/team/ninel35.jpg';
+import photo2 from '../../../assets/images/team/photo2.jpg';
+import Oksana from '../../../assets/images/team/Oksana.jpg';
+import Yuriy from '../../../assets/images/team/Yuriy.jpg';
+import photo3 from '../../../assets/images/team/photo3.jpg';
 
 const team = [
   {
     name: `Anzhela Ostrovska`,
-    // photo: anzhelaOstrovska,
+    photo: Anzhela,
     role: `Front-end Team Lead`,
     social: {
-      linkedin: 'https://www.linkedin.com/',
+      // linkedin: '',
       github: 'https://github.com/Anzhela-Ostrovska1',
     },
   },
 
   {
     name: `yaromatv`,
-    // photo: yaromatv,
+    photo: Yaroslav,
     role: `Back-end Team Lead`,
     social: {
-      linkedin: 'https://www.linkedin.com/',
+      // linkedin: 'https://www.linkedin.com/',
       github: 'https://github.com/yaromatv',
     },
   },
@@ -45,45 +45,45 @@ const team = [
     photo: ihorBerezhnyi,
     role: `Developer`,
     social: {
-      linkedin: 'https://www.linkedin.com/in/ihor-berezhnyi/',
+      // linkedin: 'https://www.linkedin.com/in/ihor-berezhnyi/',
       github: 'https://github.com/iberezhnyi',
     },
   },
 
   {
     name: `OlenaUser1982`,
-    // photo: olenaUser1982,
+    photo: photo2,
     role: `Developer`,
     social: {
-      linkedin: 'https://www.linkedin.com/',
+      // linkedin: 'https://www.linkedin.com/',
       github: 'https://github.com/OlenaUser1982',
     },
   },
 
   {
     name: `Oksana Korsun`,
-    // photo: oksanaKorsun,
+    photo: Oksana,
     role: `Developer`,
     social: {
-      linkedin: 'https://www.linkedin.com/',
+      // linkedin: 'https://www.linkedin.com/',
       github: 'https://github.com/OksanaKorsun',
     },
   },
   {
     name: `TauruS111`,
-    // photo: tauruS111,
+    photo: Yuriy,
     role: `Developer`,
     social: {
-      linkedin: 'https://www.linkedin.com/',
+      // linkedin: 'https://www.linkedin.com/',
       github: 'https://github.com/TauruS111',
     },
   },
   {
     name: `Ninel35`,
-    // photo: ninel35,
+    photo: photo3,
     role: `Developer`,
     social: {
-      linkedin: 'https://www.linkedin.com/',
+      // linkedin: 'https://www.linkedin.com/',
       github: 'https://github.com/Ninel35',
     },
   },
@@ -108,7 +108,7 @@ export const TeamModal = ({ onClose, isShow }) => {
                 <Name>{item.name}</Name>
                 <Role>{item.role}</Role>
                 <div>
-                  <SocialLink
+                  {/* <SocialLink
                     href={item.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -116,7 +116,7 @@ export const TeamModal = ({ onClose, isShow }) => {
                     <svg>
                       <use href={`${sprite}#icon-linkedin`}></use>
                     </svg>
-                  </SocialLink>
+                  </SocialLink> */}
                   <SocialLink
                     href={item.social.github}
                     target="_blank"
