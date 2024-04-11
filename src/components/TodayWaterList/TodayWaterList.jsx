@@ -24,8 +24,6 @@ const TodayWaterList = () => {
 
   const waterList = useSelector(selectNotes);
 
-  console.log(waterList);
-
   const closeModal = () => {
     setIsModalOpen(false);
   };

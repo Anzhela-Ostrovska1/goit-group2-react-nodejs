@@ -34,7 +34,7 @@ export default function AddWaterModal({ onClose }) {
   const [isEditTime, setIsEditTime] = useState(false);
   const [currentAmount, setCurrentAmount] = useState(0);
   const dispatch = useDispatch();
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(Date());
   const { year, month } = formatCurrentDate();
 
   const handleEditTime = (e, type = '') => {
@@ -54,9 +54,9 @@ export default function AddWaterModal({ onClose }) {
     setTime(currentTime);
   };
   const handleAddWater = () => {
-    dispatch(addWaterThunk({ amount, date: Date(time) }));
-    dispatch(fetchMonthWaterThunk({ year, month }));
-    onClose();
+    dispatch(addWaterThunk({ amount, date: new Date(time) }))
+      .then(() => dispatch(fetchMonthWaterThunk({ year, month })))
+      .then(onClose);
   };
 
   const incrementAmount = () => {
