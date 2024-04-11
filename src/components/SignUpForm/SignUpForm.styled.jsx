@@ -39,8 +39,7 @@ export const SignupContainer = styled.div`
 `;
 
 export const BottleBg = styled.div`
-  @media screen and (max-width: ${({ theme }) =>
-      `calc(${theme.breakpoint.tablet} - 1px)`}) {
+  @media screen and (max-width: ${({ theme }) => `calc(${theme.breakpoint.tablet} - 1px)`}) {
     order: 2;
     background-image: url(${bottleMob1x});
     background-size: contain;
@@ -50,9 +49,7 @@ export const BottleBg = styled.div`
     background-position: center;
   }
 
-  @media screen and (max-width: ${({ theme }) =>
-      theme.breakpoint
-        .tablet}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoint.tablet}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
     background-image: url(${bottleMob2x});
   }
   @media screen and (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
@@ -67,9 +64,7 @@ export const BottleBg = styled.div`
     top: 50px;
     left: -130px;
   }
-  @media screen and (min-width: ${({ theme }) =>
-      theme.breakpoint
-        .desktop}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.desktop}) and (min-device-pixel-ratio: 2) and (min-resolution: 192dpi) and (min-resolution: 2dppx) {
     background-image: url(${bottleDes2x});
   }
 `;

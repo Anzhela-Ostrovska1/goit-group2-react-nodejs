@@ -124,11 +124,6 @@ export const AddWaterButton = styled.button`
   cursor: pointer;
 
   transition: color ${({ theme }) => theme.transition.main};
-  &:hover {
-    color: ${({ theme }) => theme.color.secondaryYellow};
-  }
-
-  transition: color ${({ theme }) => theme.transition.main};
   &:hover,
   &:focus {
     box-shadow: ${({ theme }) => theme.boxShadowforButton.hoverButton};

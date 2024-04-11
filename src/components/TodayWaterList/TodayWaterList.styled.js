@@ -6,6 +6,8 @@ export const WaterList = styled.ul`
   display: flex;
   flex-direction: column;
   /* align-items: center; */
+  padding-left: 4px;
+  padding-right: 4px;
   gap: 12px;
   list-style: none;
   @media screen and (min-width: 768px) {
