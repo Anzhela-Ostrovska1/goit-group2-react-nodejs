@@ -1,4 +1,4 @@
-import{n as u,r as w,p as Ct,g as Zt,e as en,f as tn,a as re,R as $e,j as a,N as Ve,h as nn,i as xe,k as X,l as Et,s as Xe,b as rn,L as on,m as Z,o as an,q as sn,B as cn,t as ln,v as jt,w as dn}from"./index-19709e4a.js";import{b as un}from"./bg_element_des@1x-1805b66c.js";const fn=u.div`
+import{n as u,r as w,p as Ct,g as Zt,e as en,f as tn,a as re,R as $e,j as a,N as Ve,h as nn,i as xe,k as X,l as Et,s as Xe,b as rn,L as on,m as Z,o as an,q as sn,B as cn,t as ln,v as jt,w as dn}from"./index-1938c307.js";import{b as un}from"./bg_element_des@1x-1805b66c.js";const fn=u.div`
   padding: 8px 20px;
   flex-direction: column;
   align-items: flex-start;
@@ -810,6 +810,8 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof e.getDerivedStat
   display: flex;
   flex-direction: column;
   /* align-items: center; */
+  padding-left: 4px;
+  padding-right: 4px;
   gap: 12px;
   list-style: none;
   @media screen and (min-width: 768px) {
@@ -852,6 +854,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof e.getDerivedStat
   align-items: center;
   gap: 12px;
   justify-content: space-between;
+  border-bottom: 1px solid ${({theme:e})=>e.color.secondaryPowderBlue};
 `,Ba=u.div`
   display: flex;
   align-items: center;
@@ -1026,11 +1029,6 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof e.getDerivedStat
   size: 16px;
   line-height: 20px;
   cursor: pointer;
-
-  transition: color ${({theme:e})=>e.transition.main};
-  &:hover {
-    color: ${({theme:e})=>e.color.secondaryYellow};
-  }
 
   transition: color ${({theme:e})=>e.transition.main};
   &:hover,
