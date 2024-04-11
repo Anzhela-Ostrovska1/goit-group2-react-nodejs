@@ -31,7 +31,7 @@ const team = [
   },
 
   {
-    name: `yaromatv`,
+    name: `Yaroslav Matvieiev`,
     photo: Yaroslav,
     role: `Back-end Team Lead`,
     social: {
@@ -51,7 +51,7 @@ const team = [
   },
 
   {
-    name: `OlenaUser1982`,
+    name: `Olena Horodiuk`,
     photo: photo2,
     role: `Developer`,
     social: {
@@ -70,7 +70,7 @@ const team = [
     },
   },
   {
-    name: `TauruS111`,
+    name: `Yuriy Berezovskyy`,
     photo: Yuriy,
     role: `Developer`,
     social: {
@@ -79,7 +79,7 @@ const team = [
     },
   },
   {
-    name: `Ninel35`,
+    name: `Nina Raschupkina`,
     photo: photo3,
     role: `Developer`,
     social: {
