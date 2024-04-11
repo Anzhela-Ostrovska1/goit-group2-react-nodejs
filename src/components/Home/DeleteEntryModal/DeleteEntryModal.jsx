@@ -18,10 +18,8 @@ import { formatCurrentDate } from '../../../helpers/formatDate';
 export const DeleteEntryModal = ({ onClose, isShow, id }) => {
   const dispatch = useDispatch();
   const { year, month } = formatCurrentDate();
-  console.log('id в DeleteEntryModal який прийшов з пропсів', id);
 
   const handleDelete = id => {
-    console.log('id в DeleteEntryModal - handleDelete', id);
     dispatch(deleteWaterThunk(id));
     dispatch(fetchMonthWaterThunk({ year, month }));
     dispatch(fetchTodayWaterThunk());

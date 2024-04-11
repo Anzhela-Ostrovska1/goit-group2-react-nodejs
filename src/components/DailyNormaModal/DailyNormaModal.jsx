@@ -49,7 +49,7 @@ const DailyNormaModal = ({ onClose }) => {
     setWaterRate(Number(evt.target.value));
   };
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     try {
       evt.preventDefault();
       if (waterRate < 2)
@@ -60,8 +60,8 @@ const DailyNormaModal = ({ onClose }) => {
         return Notiflix.Notify.failure(
           'The maximum amount of water in liters per day: 15L',
         );
-      dispatch(updateWaterRateThunk(waterRate));
-      dispatch(fetchMonthWaterThunk({ year, month }));
+      await dispatch(updateWaterRateThunk(waterRate));
+      await dispatch(fetchMonthWaterThunk({ year, month }));
       onClose();
     } catch (error) {
       console.error('error', error);
