@@ -24,8 +24,6 @@ const TodayWaterList = () => {
 
   const waterList = useSelector(selectNotes);
 
-  console.log(waterList);
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -72,13 +70,7 @@ const TodayWaterList = () => {
             <EditWaterModal isOpen={editModalOpen} onClose={closeEditModal} />
           )}
         </WaterList>
-        {/* Код повторюється з тим який вище*/}
-        {/* {editModalOpen && (
-          <EditWaterModal
-            isOpen={editModalOpen}
-            onClose={closeEditModal} // потрібно доопрацювати editModal і додати props
-          />
-        )} */}
+
         {deleteModalOpen && (
           <DeleteEntryModal
             isShow={deleteModalOpen}
