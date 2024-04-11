@@ -30,10 +30,48 @@ export const Time = styled.p`
 `;
 
 export const EditButton = styled.button`
+  position: relative;
   margin-right: 18px;
   background-color: transparent;
+
+  padding: 0;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 16px;
+    height: 1px;
+    background-color: #9ebbff;
+    transition: 350ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  &:is(:hover, :focus)::after {
+    opacity: 1;
+  }
 `;
 
 export const DeleteButton = styled.button`
   background-color: transparent;
+  position: relative;
+
+  padding: 0;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 16px;
+    height: 1px;
+    background-color: #ef5050;
+    transition: 350ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  &:is(:hover, :focus)::after {
+    opacity: 1;
+  }
 `;

@@ -122,6 +122,12 @@ export const AddWaterButton = styled.button`
   size: 16px;
   line-height: 20px;
   cursor: pointer;
+
+  transition: color ${({ theme }) => theme.transition.main};
+  &:hover {
+    color: ${({ theme }) => theme.color.secondaryYellow};
+  }
+
   transition: color ${({ theme }) => theme.transition.main};
   &:hover,
   &:focus {
