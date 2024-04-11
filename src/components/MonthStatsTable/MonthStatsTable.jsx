@@ -27,7 +27,7 @@ const MonthStatsTable = () => {
     dispatch(
       fetchMonthWaterThunk({ year: year.toString(), month: month.toString() }),
     );
-  }, [dispatch, year, month, todayWaterList]);
+  }, [dispatch, year, month]);
 
   const changeMonth = useCallback(
     // This function changes the month based on the given direction ('forward' or 'back')

@@ -39,7 +39,14 @@ const WaterRatioPanel = () => {
     <WaterRatioContainer>
       <RatioScale>
         <h2>Today</h2>
-        <RatioInput value={value} type="range" min="0" max="100" readOnly />
+        <RatioInput
+          value={value}
+          onChange={() => {}}
+          type="range"
+          min="0"
+          max="100"
+          readOnly
+        />
         <WaterPercentage>
           <p>0%</p>
           <p>50%</p>

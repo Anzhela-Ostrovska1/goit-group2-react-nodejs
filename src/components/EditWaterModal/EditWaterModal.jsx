@@ -38,7 +38,7 @@ export default function EditWaterModal({ onClose }) {
 
   const [amount, setAmount] = useState(currentNote.amount);
   const [isEditTime, setIsEditTime] = useState(false);
-  const [currentAmount, setCurrentAmount] = useState(0);
+  const [currentAmount, setCurrentAmount] = useState(currentNote.amount);
   const dispatch = useDispatch();
   const [time, setTime] = useState(currentNote.date);
   const { year, month } = formatCurrentDate();
@@ -68,9 +68,9 @@ export default function EditWaterModal({ onClose }) {
 
     dispatch(
       editWaterThunk({ _id: currentNote.id, amount, date: new Date(time) }),
-    );
-    dispatch(fetchMonthWaterThunk({ year, month }));
-    onClose();
+    )
+      .then(() => dispatch(fetchMonthWaterThunk({ year, month })))
+      .then(onClose);
   };
 
   const incrementAmount = () => {
