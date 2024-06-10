@@ -12,5 +12,5 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/goit-group2-react-nodejs/',
+  base: '/watertracker/',
 });
