@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://watertracker-backend-2m5z.onrender.com/api';
+axios.defaults.baseURL = 'https://watertracker-backend-aen5.onrender.com/api';
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
