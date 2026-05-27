@@ -182,9 +182,9 @@ Get the app running locally:
 ### [EN] API
 
 Our app uses a custom-built backend. Backend link:
-[https://github.com/yaromatv/watertracker-backend](https://github.com/yaromatv/watertracker-backend)
+[https://github.com/Anzhela-Ostrovska1/watertracker-backend](https://github.com/Anzhela-Ostrovska1/watertracker-backend)
 
 ### [UA] API
 
 Наш додаток використовує спеціально розроблений бекенд. Посилання на бекенд:
-[https://github.com/yaromatv/watertracker-backend](https://github.com/yaromatv/watertracker-backend)
+[https://github.com/Anzhela-Ostrovska1/watertracker-backend](https://github.com/Anzhela-Ostrovska1/watertracker-backend)
